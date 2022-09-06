@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration</title>
+    <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./custom_css/doctor.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a href="#" class="navbar-brand mb-0 h1">
+            <img width="80" height="80" src="./img/st.peter_logo.jfif" alt="logo">
+            <h1 style="display: inline;">Warning: Dli pani tarong ang nav</h1>
+        </a>
+    </nav> 
+    <form action="action_page.php">
+        <!--BIG CONTAINER-->
+        <div class="container text-center"> 
+            
+          <h1 class="text-center mt-2">Doctor's Credentials</h1><hr>
+          <!--CREDENTIAL LOGIN INPUTS HERE-->
+          <div class="container col">
+            <div class="row">
+                <div class="col-sm-12 mt-2">
+                    <label class="col-sm-2" for="User Name"><b>User Name: </b></label>
+                    <input class="col-md-3" type="text" placeholder="Enter User Name" name="user name" id="user name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mt-2">
+                    <label class="col-sm-2" for="psw"><b>Password: </b></label>
+                    <input class="col-md-3" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mt-2">
+                    <label class="col-sm-2" for="psw-repeat"><b>Repeat Password: </b></label>
+                    <input class="col-md-3" type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                </div>
+            </div>
+          </div><hr>
+      
+          <h1 class="text-center mt-2">Doctor's Information</h1><hr>
+          <!--DOCTOR'S INFORMATION INPUTS HERE-->
+          <div class="container col text-center">
+            <!--ROW 1-->
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="Name"><b>Name: </b></label>
+                </div>
+                <div class="col-md-4">
+                    <input style="width: 100%;" type="name" placeholder="Enter Doctor's Name" name="name" id="name" required>
+                </div>
+                <div class="col-sm-1">
+                    <label for="Age"><b>Age: </b></label>
+                </div>
+                <div class="col-md-1">
+                    <input style="width: 100%;" type="number" placeholder="Age" name="age" id="age" required>
+                </div>
+                <div class="col-sm-1">
+                    <label for="Gender"><b>Gender: </b></label>
+                </div>
+                <div class="col-md-1">
+                    <input type="gender" placeholder="Male-Female" name="gender" id="gender" required>
+                </div>
+            </div>
+            <!--ROW 2-->
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    <label for="Email Address"><b>Email Address: </b></label>
+                </div>
+                <div class="col-md-4">
+                    <input style="width:100% ;" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="email address" required>
+                </div>
+                <div class="col-sm-2">
+                    <label for="Contact Number"><b>Contact No: </b></label>
+                </div>
+                <div class="col-md-4">
+                    <input style="width:100%" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="contact number" required>
+                </div>
+            </div>
+            <!--ROW 3-->
+            <div class="row mt-3">
+                <div class="col-sm-2">
+                    <label for="Clinic Address"><b>Clinic Address: </b></label>
+                </div>
+                <div class="col-md-4">
+                    <input style="width: 100%;" type="clinic address" placeholder="Enter Doctor's Clinic Address" name="clinic address" id="clinic address" required>
+                </div>
+                <div class="col-sm-2">
+                    <label for="License Number"><b>License Number: </b></label>
+                </div>
+                <div class="col-md-4">
+                    <input style="width: 100%;" type="license number" placeholder="Enter Doctor's License Number" name="license number" id="license number" required>
+                </div>
+            </div>
+          </div><hr>
+          
+          <h1 class="text-center mt-3">Available Schedule:</h1><hr>
+          <!--SCHED INPUT CONTAINER HERE-->
+          <div class="container">
+            <!--BIG ROW-->
+            <div class="row">
+                <!--CHECKBOX LIST COLUMN 1-->
+                <div class="col-md-3">
+                    <div class="col-md-3 ml-4">
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Sunday" id="Sunday">
+                            <label for="Sunday" class="form-check-label">Sunday</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Monday" id="Monday">
+                            <label for="Monday" class="form-check-label">Monday</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Tuesday" id="Tuesday">
+                            <label for="Tuesday" class="form-check-label">Tuesday</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Wednesday" id="Wednesday">
+                            <label for="Wednesday" class="form-check-label">Wednesday</label>
+                        </div>
+                    </div>
+                </div>
+                <!--CHECKBOX LIST COLUMN 2-->
+                <div class="col-md-3">
+                    <div class="col-md-3 ml-4">
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Thursday" id="Thursday">
+                            <label for="Thursday" class="form-check-label">Thursday</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Friday" id="Friday">
+                            <label for="Friday" class="form-check-label">Friday</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" class="form-check-input" value="Saturday" id="Saturday">
+                            <label for="Saturday" class="form-check-label">Saturday</label>
+                        </div>
+                    </div>
+                </div>
+                <!--DROPDOWN LIST COLUMN 3-->
+                <div class="col-sm-6">
+                    <form action="#">
+                        <label for="timeslot">Time Slot</label>
+                        <select name="Available Time Slot" id="TimeSlot">
+                        <option value="9AM-1PM">9AM-1PM</option>
+                        <option value="1PM-5PM">1PM-5PM</option>
+                        <option value="Whole Day">Whole Day</option>
+                    </select>
+                    </form>
+                </div>
+            </div>
+          </div>
+          
+          <!--Terms and Aggreement-->
+          <div class="container text-center mt-4 pb-4">
+            <div class="checkbox">
+                <input style="display:inline;" type="checkbox">
+                <label class="h5">
+                    By creating an account you agree to our <a href="#">Terms & Privacy</a>.
+                </label>
+              </div>
+            <button type="submit" style="width: 30%;" class="btn-lg btn-info mt-4 registerbtn">Register</button>
+          </div>
+          
+        </div>
+    </form>
+</body>
+    <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>
