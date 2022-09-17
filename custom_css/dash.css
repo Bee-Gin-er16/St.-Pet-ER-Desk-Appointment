@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: rgba(9, 126, 28, 0.1);
+}
+
+.navbar{
+    width: 390px;
+    height: 100vh;
+    position: fixed;
+    background-color: white;
+    transition: 0.4s;
+}
+
+.nav-link{
+    border-radius: 10px;
+    font-size: 1.25em;
+}
+
+/* .nav-link:active, */
+.tab-active,
+.nav-link:focus,
+.nav-link:hover{
+    box-shadow: 10px 10px 5px black;
+    background-color: rgba(9, 126, 28, 0.5);
+}
+
+.navbar-nav > li{
+    padding-left:30px;
+    padding-right:30px;
+    padding-top: 40px;
+}
+
+.navbar-nav > li .logout{
+    padding-left:30px;
+    padding-right:30px;
+    margin-top: 200px;
+}
+
+.body-section{
+    border-radius: 10px;
+    border: 12px solid black;
+}
+
+.page-content{
+    margin-left: 400px;
+    border-radius: 20px;
+}
+
+
+
+
+
