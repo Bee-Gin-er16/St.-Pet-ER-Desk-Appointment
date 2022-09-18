@@ -95,7 +95,8 @@ body{
 }
 
 .sidebar-col-2 > h1{
-    margin-left: -180px;
+    margin-left: -100px;
+    text-shadow: 0px 4px 4px rgba(9, 126, 28, 0.8);
 }
 
 
