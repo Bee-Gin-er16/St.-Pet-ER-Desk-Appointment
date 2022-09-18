@@ -65,7 +65,7 @@ body{
 
 /* Tab Find Schedule should be below the big navline */
 .item-margin{
-    margin-top: 100px;;
+    margin-top: 150px;;
 }
 
 .border-box{
@@ -78,6 +78,27 @@ body{
     position: absolute;
     z-index: 1;
 }
+
+
+.sidebar-col-1{
+    height: 100%;
+    width: 390px;
+    padding-top: 45px;
+    margin-left:-10px ;
+}
+
+.sidebar-col-2{
+    height: 100%;
+    width: 900px;
+    padding-top: 45px;
+    margin-left:10px ;
+}
+
+.sidebar-col-2 > h1{
+    margin-left: -180px;
+}
+
+
 
 
 
