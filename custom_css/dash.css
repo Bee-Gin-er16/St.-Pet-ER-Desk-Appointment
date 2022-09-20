@@ -37,7 +37,7 @@ body {
 .navbar-nav > li {
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 40px;
+  padding-top: 34px;
 }
 
 .navbar-nav > li .logout {
@@ -58,7 +58,6 @@ body {
   min-height: 100vh;
   /* width: 100%; */
   /* max-width: 100%; */
-  background-color: red;
 }
 
 .page-body {
@@ -90,7 +89,7 @@ li a span {
 
 .border-box {
   width: 100%;
-  height: 150px;
+  height: 130px;
   top: 122px;
   background: rgba(9, 126, 28, 0.2);
   margin-left: -405px;
@@ -102,14 +101,14 @@ li a span {
 .sidebar-col-1 {
   height: 100%;
   width: 400px;
-  padding-top: 45px;
+  margin-top: 35px;
   margin-left: -10px;
 }
 
 .sidebar-col-2 {
   height: 100%;
   width: 900px;
-  padding-top: 45px;
+  margin-top: 35px;
   margin-left: 10px;
 }
 
