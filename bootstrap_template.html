@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidenav</title>
+    <title>Template for Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./custom_css/dash.css">
@@ -51,6 +51,7 @@
             </li>
         </ul>
     </nav>
+
     <!--TODO adjust the body after 390px, which is the width of the nav: DONE-->
     <div class="page-content container">
         <div class="border-box row">
@@ -67,10 +68,10 @@
             <div class="row ml-4">
                 <!--R1C1 Booking forms:-->
                 <!--TODO ADD FORMS LATER BECAUSE FORMS RESTRICTS CONTAINER CONTENT-->
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="row mt-5">
                         <div class="col-lg-12">
-                            <div class="row ml-4">
+                            <div class="row ml-4 mt-3 h4">
                                 <div class="col-xs-6">
                                     <label for="Booked Date"><h4>Booking Date:</h4></label>
                                 </div>
@@ -78,11 +79,7 @@
                                     <input style="width: 100%; margin-left: 2px;" type="text" placeholder="Select which date to admit" name="booking_date" id="booking_date">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-lg-12">
-                            <div class="row ml-4">
+                            <div class="row ml-4 mt-3 h4">
                                 <div class="col-xs-6">
                                     <label for="Booked Date"><h4>Booking Time:</h4></label>
                                 </div>
@@ -90,11 +87,7 @@
                                     <input style="width: 100%;" type="time" placeholder="AM/PM" name="booking_time" id="booking_time">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-lg-12">
-                            <div class="row ml-4">
+                            <div class="row ml-4 mt-3 h4">
                                 <div class="col-xs-4">
                                     <label for="Booked Date"><h4>Name of Pet:</h4></label>
                                 </div>
@@ -105,11 +98,12 @@
                         </div>
                     </div>
                 </div>
+                
                 <!--R2C2-->
-                <div class="col-md-6">
-                    <div class="row">
+                <div class="col-md-5">
+                    <div class="row mt-5">
                         <div class="col-lg-12">
-                            <div class="row ml-4 mt-5">
+                            <div class="row mt-3 h4">
                                 <div class="col-xs-6">
                                     <label for="Booked Date"><h4>WIP Calendar:</h4></label>
                                 </div>
@@ -120,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
         
