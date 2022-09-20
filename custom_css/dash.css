@@ -1,119 +1,119 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    min-height: 100vh;
-    background-color: rgba(9, 126, 28, 0.1);
+body {
+  min-height: 100vh;
+  background-color: rgba(9, 126, 28, 0.1);
+  overflow-x: hidden;
 }
 
-.navbar{
-    width: 390px;
-    height: 100vh;
-    position: fixed;
-    background-color: white;
-    transition: 0.4s;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 100vh;
+  position: fixed;
+  background-color: white;
+  transition: 0.4s;
 }
 
-.nav-link{
-    border-radius: 10px;
-    font-size: 1.25em;
+.nav-link {
+  border-radius: 10px;
+  font-size: 1.25em;
 }
 
 /* .nav-link:active, */
 .tab-active,
 .nav-link:focus,
-.nav-link:hover{
-    box-shadow: 10px 10px 5px black;
-    background-color: rgba(9, 126, 28, 0.5);
+.nav-link:hover {
+  box-shadow: 10px 10px 5px black;
+  background-color: rgba(9, 126, 28, 0.5);
 }
 
-.navbar-nav > li{
-    padding-left:30px;
-    padding-right:30px;
-    padding-top: 40px;
+.navbar-nav > li {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 40px;
 }
 
-.navbar-nav > li .logout{
-    padding-left:30px;
-    padding-right:30px;
-    margin-top: 100px;
+.navbar-nav > li .logout {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 100px;
 }
 
-.body-section{
-    border-radius: 10px;
-    border: 12px solid black;
+.body-section {
+  border-radius: 10px;
+  border: 12px solid black;
 }
 
-.page-content{
-    margin-left: 390px;
-    margin-right: -390px;
-    border-radius: 20px;
-    height: 100vh;
-    width: 1000vw;
+.page-content {
+  margin-left: 390px;
+  /* margin-right: -390px; */
+  border-radius: 20px;
+  min-height: 100vh;
+  /* width: 100%; */
+  /* max-width: 100%; */
+  background-color: red;
 }
 
-.nav-line{
-    position: absolute;
-    width: 100vw;
-    height: 150px;
-    left: -1px;
-    top: 122px;
-    background: rgba(9, 126, 28, 0.2);
-    z-index: 1;
+.page-body {
+  /* position: fixed; */
+  margin-top: 285px;
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid black; */
+}
+
+.nav-line {
+  position: absolute;
+  width: 100vw;
+  height: 150px;
+  left: -1px;
+  top: 122px;
+  background: rgba(9, 126, 28, 0.2);
+  z-index: 1;
 }
 
 /* Tab Find Schedule should be below the big navline */
-.item-margin{
-    margin-top: 85px;;
+.item-margin {
+  margin-top: 85px;
 }
 
-li a span{
-    margin-left:20px;
+li a span {
+  margin-left: 20px;
 }
 
-.border-box{
-    width: 100%;
-    height: 150px;
-    top: 122px;
-    background: rgba(9, 126, 28, 0.2);
-    margin-left: -405px;
-    margin-right: 0;
-    position: fixed;
-    z-index: 1;
+.border-box {
+  width: 100%;
+  height: 150px;
+  top: 122px;
+  background: rgba(9, 126, 28, 0.2);
+  margin-left: -405px;
+  margin-right: 0;
+  position: fixed;
+  z-index: 1;
 }
 
-
-.sidebar-col-1{
-    height: 100%;
-    width: 400px;
-    padding-top: 45px;
-    margin-left:-10px ;
+.sidebar-col-1 {
+  height: 100%;
+  width: 400px;
+  padding-top: 45px;
+  margin-left: -10px;
 }
 
-.sidebar-col-2{
-    height: 100%;
-    width: 900px;
-    padding-top: 45px;
-    margin-left:10px ;
+.sidebar-col-2 {
+  height: 100%;
+  width: 900px;
+  padding-top: 45px;
+  margin-left: 10px;
 }
 
-.sidebar-col-2 > h1{
-    margin-left: -400px;
-    text-shadow: 0px 4px 4px rgba(9, 126, 28, 0.8);
+.sidebar-col-2 > h1 {
+  margin-left: -400px;
+  text-shadow: 0px 4px 4px rgba(9, 126, 28, 0.8);
 }
-
-.page-body{
-    position:fixed;
-    margin-top: 285px;
-    height: 605px;
-    width: 1502px;
-    /* border: 2px solid black; */
-}
-
-
-
-
-
