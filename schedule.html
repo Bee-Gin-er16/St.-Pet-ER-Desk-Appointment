@@ -70,55 +70,58 @@
             <div class="col-md-7">
               <div class="row mt-5">
                 <div class="col-sm-12 col-md-12">
-                  <div class="row ml-4 mt-2 h4">
-                    <div class="col-xs-6">
-                      <label for="Booked Date"><h4>Booking Date:</h4></label>
+                  <!--TODO use forms to obtain data for appointment-->
+                  <form action="">
+                    <div class="row ml-4 mt-2 h4">
+                      <div class="col-xs-6">
+                        <label for="Booked Date"><h4>Booking Date:</h4></label>
+                      </div>
+                      <div class="col-md-6 ml-4">
+                        <input
+                          style="width: 100%; margin-left: 2px"
+                          type="datetime-local"
+                          placeholder="Select which date to admit"
+                          name="booking_date"
+                          id="booking_date"
+                        />
+                      </div>
                     </div>
-                    <div class="col-md-6 ml-4">
-                      <input
-                        style="width: 100%; margin-left: 2px"
-                        type="datetime-local"
-                        placeholder="Select which date to admit"
-                        name="booking_date"
-                        id="booking_date"
-                      />
+                    <div class="row ml-4 mt-3 h4">
+                      <div class="col-xs-6">
+                        <label for="Booked Date"><h4>Booking Time:</h4></label>
+                      </div>
+                      <div class="col-md-6 ml-4">
+                        <input
+                          style="width: 100%"
+                          type="time"
+                          min="9:00AM"
+                          max="5:00PM"
+                          placeholder="AM/PM"
+                          name="booking_time"
+                          id="booking_time"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="row ml-4 mt-3 h4">
-                    <div class="col-xs-6">
-                      <label for="Booked Date"><h4>Booking Time:</h4></label>
+                    <div class="row ml-4 mt-3 h4">
+                      <div class="col-xs-12">
+                        <h6><span><b>Notice: </b></span>Office hours start at 9:00AM and end at 5:00PM</h6>
+                      </div>
                     </div>
-                    <div class="col-md-6 ml-4">
-                      <input
-                        style="width: 100%"
-                        type="time"
-                        min="9:00AM"
-                        max="5:00PM"
-                        placeholder="AM/PM"
-                        name="booking_time"
-                        id="booking_time"
-                      />
+                    <div class="row ml-4 mt-3 h4">
+                      <div class="col-xs-4">
+                        <label for="Booked Date"><h4>Name of Pet:</h4></label>
+                      </div>
+                      <div class="col-md-6 ml-4">
+                        <input
+                          style="width: 100%; margin-left: 14px"
+                          type="text"
+                          placeholder="Select Pet to Admit"
+                          name="booking_pet"
+                          id="booking_pet"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div class="row ml-4 mt-3 h4">
-                    <div class="col-xs-12">
-                      <h6><span><b>Notice: </b></span>Office hours start at 9:00AM and end at 5:00PM</h6>
-                    </div>
-                  </div>
-                  <div class="row ml-4 mt-3 h4">
-                    <div class="col-xs-4">
-                      <label for="Booked Date"><h4>Name of Pet:</h4></label>
-                    </div>
-                    <div class="col-md-6 ml-4">
-                      <input
-                        style="width: 100%; margin-left: 14px"
-                        type="text"
-                        placeholder="Select Pet to Admit"
-                        name="booking_pet"
-                        id="booking_pet"
-                      />
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
