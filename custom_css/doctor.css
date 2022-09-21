@@ -2,3 +2,22 @@
     margin-left: 0;
     padding: 0;
 }
+
+.log-nav-marg{
+    margin-left: 18vw;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.input-width{
+    width: 100%;
+}
+
+.inline-elem{
+    display: inline;
+}
+
+.submit-width{
+    width: 30%;
+}

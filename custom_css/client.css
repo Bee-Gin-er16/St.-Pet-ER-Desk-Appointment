@@ -2,3 +2,35 @@
     border-left: 0.5px solid gray;
     height: 50;
 }
+
+.log-nav-marg{
+    margin-left: 18vw;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.marg-l2{
+    margin-left: 2%;
+}
+
+.marg-t2{
+    margin-top: 2%;
+}
+
+.wid-30{
+    width: 30%;
+}
+
+.wid-90{
+    width: 90%;
+}
+
+.wid-100{
+    width: 100%;
+}
+
+.inline-elem{
+    display: inline;
+}
+

@@ -11,11 +11,10 @@
 </head>
 <body>
   <nav class="navbar navbar-light bg-light">
-    <!--TODO: Make css specs for nav images-->
     <div class="container row">
       <div class="col-md-6">
         <a href="./log_in.html" class="navbar-brand mb-0 h1">
-          <img class="img-thumbnail" style="margin-left: 18vw;" width="80" height="80" src="./img/st.peter_logo.jfif" alt="logo">
+          <img class="img-thumbnail log-nav-marg"  src="./img/st.peter_logo.jfif" alt="logo">
         </a>
       </div>
     </div>
@@ -25,36 +24,35 @@
     <div class="container">
       <!--BIG ROW 1-->
       <div class="row mr-4">
-        <!--TODO erase all styles so that it doesn't have inline css-->
         <!--FIRST COLUMN: CLIENT LOGIN CREDS-->
         <div class="col-md-6">
           <h1 class="text-center pt-3 pb-2">Client's Credentials</h1><hr>
-          <div class="container col" style="margin-left: 2%;">
+          <div class="container col marg-l2" >
             <!--ROW 1-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="User Name"><b>User Name: </b></label>
               </div>
               <div class="col-sm-8">
-                <input style="width: 90%;" type="text" placeholder="Enter User Name" name="user-name" id="user-name" required>
+                <input class="wid-90" type="text" placeholder="Enter User Name" name="user-name" id="user-name" required>
               </div>
             </div>
             <!--ROW 2-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="psw"><b>Password: </b></label>
               </div>
               <div class="col-sm-8">
-                <input style="width: 90%;" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                <input class="wid-90" type="password" placeholder="Enter Password" name="psw" id="psw" required>
               </div>
             </div>
             <!--ROW 3-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="psw-repeat"><b>Repeat Password: </b></label>
               </div>
               <div class="col-sm-8">
-                <input style="width: 90%;"
+                <input class="wid-90"
                 type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
               </div>
             </div>
@@ -63,64 +61,64 @@
         <!--SECOND COLUMN: FIRST PET INFORMATION-->
         <div class="col-md-6">
           <h1 class="text-center pt-3 pb-2">First Pet Registration</h1><hr>
-          <div class="container col" style="margin-left: 1%;">
+          <div class="container col marg-l2">
             <!--ROW 1-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-2">
                 <label for="pet-name"><b>Name: </b></label>
               </div>
               <div class="col-md-4">
-                <input style="width: 100%;" type="text" placeholder="Pet's Name" name="pet-name" id="pet-name" required>
+                <input class="wid-100" type="text" placeholder="Pet's Name" name="pet-name" id="pet-name" required>
               </div>
               <div class="col-sm-2">
                 <label for="pet-gender"><b>Gender: </b></label>
               </div>
               <!--TODO make genders into dropdown-->
               <div class="col-md-4">
-                <input style="width: 90%;" type="text" placeholder="Male/Female" name="pet-gender" id="pet-gender" required>
+                <input class="wid-90" type="text" placeholder="Male/Female" name="pet-gender" id="pet-gender" required>
               </div>
             </div>
             <!--ROW 2-->
-            <div style="margin-top: 2%;" class="row">
+            <div class="row marg-t2">
               <div class="col-sm-2">
                 <label for="pet-type"><b>Breed: </b></label>
               </div>
               <div class="col-md-4">
-                <input style="width: 100%;" type="text" placeholder="Breed" name="pet-breed" id="pet-breed" required>
+                <input class="wid-100" type="text" placeholder="Breed" name="pet-breed" id="pet-breed" required>
               </div>
               <div class="col-sm-2">
                 <label for="pet-type"><b>Age: </b></label>
               </div>
               <div class="col-md-4">
-                <input style="width: 90%;" type="number" placeholder="Age" name="pet-age" id="pet-age" required>
+                <input class="wid-90" type="number" placeholder="Age" name="pet-age" id="pet-age" required>
               </div>
             </div>
             <!--ROW 3-->
-            <div style="margin-top: 2%" class="row">
+            <div class="row marg-t2">
               <div class="col-sm-2">
                 <label for="pet-type"><b>Type: </b></label>
               </div>
               <!--TODO make type into dropdown-->
               <div class="col-md-4">
-                <input style="width: 100%;" type="text" placeholder="Type" name="pet-type" id="pet-type" required>
+                <input class="wid-100" type="text" placeholder="Type" name="pet-type" id="pet-type" required>
               </div>
             </div>
             <!--ROW 4-->
-            <div style="margin-top: 2%;" class="row">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="pet-height"><b>Height in inches: </b></label>
               </div>
               <div class="col-md-6">
-                <input style="width: 100%;" type="number" placeholder="Height in inches(Optional)" name="pet-height" id="pet-height">
+                <input class="wid-100" type="number" placeholder="Height in inches(Optional)" name="pet-height" id="pet-height">
               </div>
             </div>
             <!--ROW 5-->
-            <div style="margin-top: 2%;" class="row">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="pet-height"><b>Weight in pounds: </b></label>
               </div>
               <div class="col-md-6">
-                <input style="width: 100%;" type="number" placeholder="Weight in pounds(Optional)" name="pet-weight" id="pet-weight">
+                <input class="wid-100" type="number" placeholder="Weight in pounds(Optional)" name="pet-weight" id="pet-weight">
               </div>
             </div>
           </div>
@@ -139,16 +137,16 @@
                 <label for="Name"><b>Name: </b></label>
               </div>
               <div class="col-sm-10">
-                <input style="width: 100%;" type="name" placeholder="Enter Doctor's Name" name="name" id="name" required>
+                <input class="wid-100" type="name" placeholder="Enter Doctor's Name" name="name" id="name" required>
               </div>
             </div>
             <!--ROW 2-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-2">
                 <label for="Age"><b>Age: </b></label>
               </div>
               <div class="col-sm-3">
-                <input style="width: 100%;" type="number" placeholder="Age" name="age" id="age" required>
+                <input class="wid-100" type="number" placeholder="Age" name="age" id="age" required>
               </div>
               <div class="col-sm-2">
                 <label for="Gender"><b>Gender: </b></label>
@@ -158,21 +156,21 @@
               </div>
             </div>
             <!--ROW 3-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="Email Address"><b>Email Address: </b></label>
               </div>
               <div class="col-sm-8">
-                <input style="width:100% ;" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="email address" required>
+                <input class="wid-100" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="email address" required>
               </div>
             </div>
             <!--ROW 4-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <label for="Contact Number"><b>Contact No: </b></label>
               </div>
               <div class="col-sm-8">
-                <input style="width:100%" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="contact number" required>
+                <input class="wid-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="contact number" required>
               </div>
             </div>
           </div>
@@ -197,7 +195,7 @@
               </div>
             </div>
             <!--ROW 2-->
-            <div class="row" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <input type="checkbox" class="form-check-input" value="Parvovirus" id="Parvovirus">
                 <label for="Parvovirus" class="form-check-label">Parvovirus</label>
@@ -212,7 +210,7 @@
               </div>
             </div>
             <!--ROW 3-->
-            <div class="row mt-2" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <input type="checkbox" class="form-check-input" value="Leptospirosis" id="Leptospirosis">
                 <label for="Leptospirosis" class="form-check-label">Leptospirosis</label>
@@ -227,7 +225,7 @@
               </div>
             </div>
             <!--ROW 4-->
-            <div class="row mt-2" style="margin-top: 2%;">
+            <div class="row marg-t2">
               <div class="col-sm-4">
                 <input type="checkbox" class="form-check-input" value="Giardia" id="Giardia">
                 <label for="Giardia" class="form-check-label">Giardia</label>
@@ -247,13 +245,13 @@
       <!--Terms and Aggreement-->
       <div class="container text-center mt-4 pb-4">
         <div class="checkbox">
-            <input style="display:inline;" type="checkbox">
+            <input class="inline-elem" type="checkbox">
             <label class="h5">
                 By creating an account you agree to our <a href="#">Terms & Privacy</a>.
             </label>
           </div>
-        <button type="submit" style="width: 30%;" class="btn-lg btn-info mt-4 registerbtn">Register</button>
-        <button type="submit" onclick="getdata()" style="width: 30%;" class="btn-lg btn-info mt-4 fetchbtn">Fetch JS Data Jquery (RESET)</button>
+        <button type="submit" class="btn-lg btn-info mt-4 wid-30 registerbtn">Register</button>
+        <button type="submit" onclick="getdata()" class="btn-lg btn-info mt-4 wid-30 fetchbtn">Fetch JS Data Jquery (RESET)</button>
       </div>
 
     </div>
