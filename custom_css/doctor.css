@@ -21,3 +21,17 @@
 .submit-width{
     width: 30%;
 }
+
+/* body{
+    background-image: url('/img/clouds.avif');
+} */
+
+.theform{
+    background-image: url('/img/clouds.avif');
+}
+
+form{
+    background-image: url('/img/clouds.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
