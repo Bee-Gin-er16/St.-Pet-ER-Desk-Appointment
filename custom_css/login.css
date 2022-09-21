@@ -1,5 +1,8 @@
 .log-nav-marg{
     margin-left: 18vw;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
 }
 
 .label-marg-left{
@@ -13,3 +16,4 @@
 .btn-login{
     width: 30%;
 }
+
