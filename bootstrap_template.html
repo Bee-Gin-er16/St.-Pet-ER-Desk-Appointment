@@ -86,21 +86,21 @@
       </div>
 
       <!--Booking column-->
-      <div class="page-body">
-        <div class="row ml-4">
+      <div class="page-body container disable-scroll g-0">
+        <div class="row ml-2">
           <!--R1C1 Booking forms:-->
           <!--TODO ADD FORMS LATER BECAUSE FORMS RESTRICTS CONTAINER CONTENT-->
           <div class="col-md-7">
             <div class="row mt-5">
-              <div class="col-lg-12">
-                <div class="row ml-4 mt-3 h4">
+              <div class="col-sm-12 col-md-12">
+                <div class="row ml-4 mt-2 h4">
                   <div class="col-xs-6">
                     <label for="Booked Date"><h4>Booking Date:</h4></label>
                   </div>
                   <div class="col-md-6 ml-4">
                     <input
                       style="width: 100%; margin-left: 2px"
-                      type="text"
+                      type="datetime-local"
                       placeholder="Select which date to admit"
                       name="booking_date"
                       id="booking_date"
@@ -115,10 +115,17 @@
                     <input
                       style="width: 100%"
                       type="time"
+                      min="9:00AM"
+                      max="5:00PM"
                       placeholder="AM/PM"
                       name="booking_time"
                       id="booking_time"
                     />
+                  </div>
+                </div>
+                <div class="row ml-4 mt-3 h4">
+                  <div class="col-xs-12">
+                    <h6><span><b>Notice: </b></span>Office hours start at 9:00AM and end at 5:00PM</h6>
                   </div>
                 </div>
                 <div class="row ml-4 mt-3 h4">
@@ -140,7 +147,7 @@
           </div>
 
           <!--R2C2-->
-          <div class="col-md-5">
+          <!-- <div class="col-md-5">
             <div class="row mt-5">
               <div class="col-lg-12">
                 <div class="row mt-3 h4">
@@ -159,7 +166,18 @@
                 </div>
               </div>
             </div>
+          </div> -->
+
+          <div class="col-md-5">
+            <div class="row mt-5">
+              <div class="col-lg-12">
+                <div class="row mt-3 h4">
+                  <h1>Later. Might be a problem</h1>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

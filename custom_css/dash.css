@@ -43,7 +43,7 @@ body {
 .navbar-nav > li .logout {
   padding-left: 30px;
   padding-right: 30px;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 .body-section {
@@ -62,7 +62,7 @@ body {
 
 .page-body {
   /* position: fixed; */
-  padding-top: 285px;
+  padding-top: 245px;
   height: 100%;
   width: 100%;
   /* border: 2px solid black; */
@@ -115,4 +115,13 @@ li a span {
 .sidebar-col-2 > h1 {
   margin-left: -400px;
   text-shadow: 0px 4px 4px rgba(9, 126, 28, 0.8);
+}
+
+::placeholder{
+  font-size:large;
+}
+
+.disable-scroll{
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
