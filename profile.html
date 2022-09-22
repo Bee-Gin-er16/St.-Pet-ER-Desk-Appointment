@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./custom_css/dash.css">
+    <link rel="stylesheet" href="./custom_css/profile.css">
 </head>
 <body>
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
@@ -63,31 +64,55 @@
         </div>
   
         <div class="page-body container disable-scroll g-0">
-          <div class="row h4">
-            <div class="col-md-6 border border-primary">
-                <div class="row mt-3">
+          <div class="row h4 mt-2">
+            <div class="col-md-6 col-lg-6 border border-primary">
+                <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
-                        <h2 class="">YOUR INFORMATION</h2>
+                        <h4 class="">YOUR INFORMATION</h4>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <!--Complicated-->
+                <div class="row mt-2 text-center">
+                    <div class="col-sm-2 col-md-2">
+                        <label class="h5" for="Name:">Name:</label>
+                    </div>
+                    <div class="col-sm-6 col-md-6 top-indent left-indent-1">
+                        <h5>Hans Dela Cruz</h5>
+                    </div>
+                    <div class="col-sm-2 col-md-2">
+                        <label class="h5" for="Name:">Age:</label>
+                    </div>
+                    <div class="col-sm-2 col-md-2 top-indent left-indent-1">
+                        <h5>23</h5>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-sm-2 col-md-2">
+                        <label class="h5" for="Name:">Gender:</label>
+                    </div>
+                    <div class="col-sm-3 col-md-3 top-indent left-indent-2">
+                        <h5>Male</h5>
+                    </div>
                     <div class="col-sm-3 col-md-3">
-                        <label for="Name:"><h4>Name:</h4></label>
+                        <label class="h5" for="Name:">Contact No:</label>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                        <h4>Hans DC.</h4>
+                    <div class="col-sm-2 col-md-2">
+                        <h5>23</h5>
                     </div>
                 </div>
+
+                <!--Optimized: TABLE OR NOTHING-->
+                
             </div>
             <div class="col-md-6 border border-primary">
-                <div class="row mt-3">
+                <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
-                        <h2 class="">PET INFORMATION</h2>
+                        <h4>PET INFORMATION</h4>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-2 text-center">
                     <div class="col-md-12 col-sm-12" style="width: 100%;">
-                        <input type="text" placeholder="Drop down pet" id="current-pet" name="current-pet">
+                        <input type="text" placeholder="First Pet as default" id="current-pet" name="current-pet">
                     </div>
                 </div>
             </div>
