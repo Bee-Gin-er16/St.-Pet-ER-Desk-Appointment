@@ -69,10 +69,11 @@
                 <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
                         <h4 class="">YOUR INFORMATION</h4>
+                        <hr>
                     </div>
                 </div>
                 <!--Complicated-->
-                <div class="row mt-2 text-center">
+                <!-- <div class="row mt-2 text-center">
                     <div class="col-sm-2 col-md-2">
                         <label class="h5" for="Name:">Name:</label>
                     </div>
@@ -99,9 +100,55 @@
                     <div class="col-sm-2 col-md-2">
                         <h5>23</h5>
                     </div>
-                </div>
-
+                </div> -->
+                <!--TODO replace inline styles-->
                 <!--Optimized: TABLE OR NOTHING-->
+                <div class="row mt-2">
+                    <div class="col-sm-2">
+                        <label class="h5" for="Name">Name:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <h5 id="user-name" style="display:inline;">Meee Leee Seeeeeee e. Leeeeeeee</h5>
+                    </div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="h5" for="Gender">Gender:</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 style="display:inline;">Male</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="h5" for="Age">Age:</label>
+                        <h5 id="user-age" style="display:inline;">23</h5>
+                    </div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="h5" for="Contact">Contact:</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 id="user-contact" style="display:inline;">09177066008</h5>
+                    </div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="h5" for="Address">Address:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <h5 id="user-address" style="display:inline;">Brgy. Kamputhaw. San Isidro Labrador Princessa</h5>
+                    </div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label class="h5" for="Email">Email:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <h5 id="user-contact" style="display:inline;">hanseubert@gmail.com</h5>
+                    </div>
+                </div><hr>
+
+                <!--Solution 3: Column first-row later-->
                 
             </div>
             <div class="col-md-6 border border-primary">
@@ -112,7 +159,12 @@
                 </div>
                 <div class="row mt-2 text-center">
                     <div class="col-md-12 col-sm-12" style="width: 100%;">
-                        <input type="text" placeholder="First Pet as default" id="current-pet" name="current-pet">
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>Select pet to display</option>
+                            <option value="1">AssFace</option>
+                            <option value="2">TwoFAce</option>
+                            <option value="3">Three</option>
+                          </select>
                     </div>
                 </div>
             </div>
