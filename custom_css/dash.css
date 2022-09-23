@@ -62,6 +62,7 @@ body {
 
 .page-body {
   /* position: fixed; */
+  display: block;
   padding-top: 245px;
   height: 100%;
   width: 100%;
