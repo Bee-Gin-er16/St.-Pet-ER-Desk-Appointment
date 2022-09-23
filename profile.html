@@ -66,14 +66,14 @@
         <div class="page-body container disable-scroll g-0">
           <div class="row h4 mt-2">
             <!-- First column: add border to see the element full width -->
-            <div class="col-md-6 col-lg-6 border border-primary">
+            <div class="col-md-6 col-lg-6">
                 <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
-                        <h4 class="">YOUR INFORMATION</h4>
-                        <hr>
+                        <h4 class="">YOUR INFORMATION</h4><hr>
                     </div>
                 </div>
                 <!--TODO replace inline styles-->
+                <!--TODO ID some or maybe containers that could be useful in DOMS-->
                 <!--Optimized: TABLE OR NOTHING-->
                 <div class="row mt-2">
                     <div class="col-sm-2">
@@ -125,25 +125,57 @@
             </div>
             <!-- Second column: add border to see the element full width -->
             <div class="col-md-6 border border-primary">
-                <div class="row mt-3 text-center">
-                    <div class="col-sm-12 col-md-12">
-                        <h4>PET INFORMATION</h4>
+                <div class="row mt-3">
+                    <div class="col-sm-4">
+                        <h4>PET PROFILE:</h4>
                     </div>
-                </div>
-                <div class="row mt-2 text-center">
-                    <div class="col-md-12 col-sm-12" style="width: 100%;">
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Select pet to display</option>
-                            <option value="1">AssFace</option>
+                    <div class="col-sm-8">
+                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="user-pets">
+                            <option selected>Select Pet Profile</option>
+                            <option value="1">OneFace</option>
                             <option value="2">TwoFAce</option>
                             <option value="3">Three</option>
-                          </select>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row mt-2 d-flex justify-content-between">
+                    <div class="col-sm-8 justify-content-start">
+                        <label class="h5" for="Name">Name:</label>
+                        <h5 class="inline-elem" id="pet-name">Ruffles</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="h5" for="Name">Gender:</label>
+                        <h5 class="inline-elem" id="pet-gender">Male</h5>
+                    </div>
+                    <div class="col-sm-8 mt-2">
+                        <label class="h5" for="Name">Pet Type:</label>
+                        <h5 class="inline-elem" id="pet-type">Domesticated</h5>
+                    </div>
+                    <div class="col-sm-4 mt-2">
+                        <label class="h5" for="Name">Age:</label>
+                        <h5 class="inline-elem" id="pet-age">22</h5>
+                    </div>
+                    <div class="col-sm-8 mt-2">
+                        <label class="h5" for="Name">Breed:</label>
+                        <h5 class="inline-elem" id="pet-breed">German Shepherd</h5>
+                    </div>
+                    <div class="col-sm-8 mt-2">
+                        <label class="h5" for="Name">Size:</label>
+                        <p class="inline-elem h5" id="pet-height"><span>kg.</span></p>
+                        <p class="inline-elem h5" id="pet-weight"><span>inches</span></p>
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <label class="h5" for="Name">This pet has taken the following vaccines:</label>
+                        
                     </div>
                 </div>
             </div>
-            
           </div>
         </div>
+
+        
+
       </div>
 </body>
 <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
