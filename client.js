@@ -1,10 +1,10 @@
+// TESTING FOR EMPTY SPACE CHECKING: MAY USE AT YOUR OWN LEISURE
 class Client{
     constructor(name,password){
         this.name = name;
         this.password = password;
         console.log(name);
         console.log(password);
-
     }
 
     display(){

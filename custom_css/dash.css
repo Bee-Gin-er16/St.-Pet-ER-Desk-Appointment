@@ -126,4 +126,7 @@ li a span {
   overflow-x: hidden;
 }
 
+.inline-elem{
+  display: inline;
+}
 

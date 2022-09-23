@@ -34,3 +34,13 @@
     display: inline;
 }
 
+.theform{
+    background-image: url('/img/clouds.avif');
+}
+
+form{
+    background-image: url('/img/clouds.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

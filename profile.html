@@ -65,6 +65,7 @@
   
         <div class="page-body container disable-scroll g-0">
           <div class="row h4 mt-2">
+            <!-- First column: add border to see the element full width -->
             <div class="col-md-6 col-lg-6 border border-primary">
                 <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
@@ -72,35 +73,6 @@
                         <hr>
                     </div>
                 </div>
-                <!--Complicated-->
-                <!-- <div class="row mt-2 text-center">
-                    <div class="col-sm-2 col-md-2">
-                        <label class="h5" for="Name:">Name:</label>
-                    </div>
-                    <div class="col-sm-6 col-md-6 top-indent left-indent-1">
-                        <h5>Hans Dela Cruz</h5>
-                    </div>
-                    <div class="col-sm-2 col-md-2">
-                        <label class="h5" for="Name:">Age:</label>
-                    </div>
-                    <div class="col-sm-2 col-md-2 top-indent left-indent-1">
-                        <h5>23</h5>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col-sm-2 col-md-2">
-                        <label class="h5" for="Name:">Gender:</label>
-                    </div>
-                    <div class="col-sm-3 col-md-3 top-indent left-indent-2">
-                        <h5>Male</h5>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <label class="h5" for="Name:">Contact No:</label>
-                    </div>
-                    <div class="col-sm-2 col-md-2">
-                        <h5>23</h5>
-                    </div>
-                </div> -->
                 <!--TODO replace inline styles-->
                 <!--Optimized: TABLE OR NOTHING-->
                 <div class="row mt-2">
@@ -108,7 +80,7 @@
                         <label class="h5" for="Name">Name:</label>
                     </div>
                     <div class="col-sm-10">
-                        <h5 id="user-name" style="display:inline;">Meee Leee Seeeeeee e. Leeeeeeee</h5>
+                        <h5 id="user-name" class="inline-elem">Meee Leee Seeeeeee e. Leeeeeeee</h5>
                     </div>
                 </div><hr>
                 <div class="row">
@@ -116,11 +88,11 @@
                         <label class="h5" for="Gender">Gender:</label>
                     </div>
                     <div class="col-sm-3">
-                        <h5 style="display:inline;">Male</h5>
+                        <h5 id="user-gender" class="inline-elem">Male</h5>
                     </div>
                     <div class="col-sm-4">
                         <label class="h5" for="Age">Age:</label>
-                        <h5 id="user-age" style="display:inline;">23</h5>
+                        <h5 id="user-age" class="inline-elem">23</h5>
                     </div>
                 </div><hr>
                 <div class="row">
@@ -128,7 +100,7 @@
                         <label class="h5" for="Contact">Contact:</label>
                     </div>
                     <div class="col-sm-3">
-                        <h5 id="user-contact" style="display:inline;">09177066008</h5>
+                        <h5 id="user-contact" class="inline-elem">09177066008</h5>
                     </div>
                 </div><hr>
                 <div class="row">
@@ -136,7 +108,7 @@
                         <label class="h5" for="Address">Address:</label>
                     </div>
                     <div class="col-sm-9">
-                        <h5 id="user-address" style="display:inline;">Brgy. Kamputhaw. San Isidro Labrador Princessa</h5>
+                        <h5 id="user-address" class="inline-elem">Brgy. Kamputhaw. San Isidro Labrador Princessa</h5>
                     </div>
                 </div><hr>
                 <div class="row">
@@ -144,13 +116,14 @@
                         <label class="h5" for="Email">Email:</label>
                     </div>
                     <div class="col-sm-10">
-                        <h5 id="user-contact" style="display:inline;">hanseubert@gmail.com</h5>
+                        <h5 id="user-contact" class="inline-elem">hanseubert@gmail.com</h5>
                     </div>
                 </div><hr>
 
                 <!--Solution 3: Column first-row later-->
                 
             </div>
+            <!-- Second column: add border to see the element full width -->
             <div class="col-md-6 border border-primary">
                 <div class="row mt-3 text-center">
                     <div class="col-sm-12 col-md-12">
