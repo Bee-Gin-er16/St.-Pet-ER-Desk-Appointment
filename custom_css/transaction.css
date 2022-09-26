@@ -1,6 +1,10 @@
+/*TODO Rename and refactor the transaction.css to tables.css*/
+
 .th{
     border: 1px solid black;
 }
+
+tbody > tr:hover {background-color: #85e785;}
 
 .my-custom-scrollbar {
     position: relative;
