@@ -1,0 +1,6 @@
+.sched-node{
+    box-shadow: 1px 1px 1px black;
+    background-color: rgba(9, 126, 28, 0.5);
+    height: 50px;
+    width: 50px;
+}

@@ -78,7 +78,7 @@
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody data-toggle="collapse" data-target="#demo">
                     <tr>
                       <th scope="row">28/09/2022</th>
                       <td>9:30 AM</td>
@@ -110,8 +110,18 @@
                   </tbody>
                 </table>
               </div>
+              <div id="demo" class="collapse container border border-dark mt-2">
+                <div id="content-area container">
+                  <h1>Hello this is the container</h1>
+                </div>
+                <div class="row justify-content-around">
+                  <button class="col-sm-3 w-50 btn btn-primary">ACCEPT</button>
+                  <button class="col-sm-3 w-50 btn btn-warning">RESCHEDULE</button>
+                  <button class="col-sm-3 w-50 btn btn-danger">CANCEL</button>
+                </div>
+              </div>
             </div>
-          </div>
+        </div>
     </div>
 
 </body>
