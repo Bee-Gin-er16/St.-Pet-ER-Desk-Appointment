@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./custom_css/dash.css">
-    <link rel="stylesheet" href="./custom_css/transaction.css">
+    <link rel="stylesheet" href="./custom_css/table.css">
 </head>
 <body>
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
@@ -54,14 +54,14 @@
     </nav>
 
     <div class="page-content">
-        <div class="border-box row">
-          <div class="sidebar-col-1">
-            <h1 class="font-weight-bold text-center">DASHBOARD</h1>
-          </div>
-          <div class="sidebar-col-2">
-            <h1 class="font-weight-bold text-center">WELCOME DR. JULIAN!</h1>
-          </div>
+      <div class="border-box row">
+        <div class="col-sm-3 mt-4 welcome-shadow">
+          <h1 class="font-weight-bold text-center">DASHBOARD</h1>
         </div>
+        <div class="col-sm-4 mt-4 welcome-shadow">
+          <h1 class="font-weight-bold text-center no-gutters">WELCOME JULIAN!</h1>
+        </div>
+      </div>
   
         <!--TODO javascript to test if it can add rows.-->
         <div class="page-body container disable-scroll g-0">
@@ -71,7 +71,8 @@
                 <table class="text-center transaction-table table table-success table-bordered border-dark" id="user-transactions">
                   <thead>
                     <tr>
-                      <th scope="col">Date</th>
+                      <th scope="col">Appointment ID</th>
+                      <th scope="col">Date Done</th>
                       <th scope="col">Time</th>
                       <th scope="col">Client</th>
                       <th scope="col">Findings</th>
@@ -80,23 +81,26 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">28/09/2022</th>
+                      <th scope="row">#4734623</th>
+                      <td>28/09/2022</td>
                       <td>9:30 AM</td>
-                      <td>Dr. Octavius</td>
+                      <td>Peter Parker</td>
                       <td>Ebola</td>
                       <td>Anti-Ebola</td>
                     </tr>
                     <tr>
-                      <th scope="row">28/09/2022</th>
+                      <th scope="row">#2344342</th>
+                      <td>28/09/2022</td>
                       <td>9:30 AM</td>
-                      <td>Dr. Octavius</td>
+                      <td>Penny Hofstader</td>
                       <td>Ebola</td>
                       <td>Anti-Ebola</td>
                     </tr>
                     <tr>
-                      <th scope="row">28/09/2022</th>
+                      <th scope="row">#5475845</th>
+                      <td>28/09/2022</td>
                       <td>9:30 AM</td>
-                      <td>Dr. Octavius</td>
+                      <td>Sheldon Cooper</td>
                       <td>Ebola</td>
                       <td>Anti-Ebola</td>
                     </tr>

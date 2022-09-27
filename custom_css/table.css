@@ -11,6 +11,8 @@ tbody > tr:hover {background-color: #85e785;}
     height: 200px;
     overflow: auto;
 }
+
 .table-wrapper-scroll-y {
     display: block;
 }
+

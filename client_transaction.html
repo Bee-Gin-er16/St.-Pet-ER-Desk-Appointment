@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./custom_css/dash.css">
-    <link rel="stylesheet" href="./custom_css/transaction.css">
+    <link rel="stylesheet" href="./custom_css/table.css">
 </head>
 <body>
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
@@ -55,52 +55,52 @@
 
     <div class="page-content">
         <div class="border-box row">
-          <div class="sidebar-col-1">
+          <div class="col-sm-3 mt-4 welcome-shadow">
             <h1 class="font-weight-bold text-center">DASHBOARD</h1>
           </div>
-          <div class="sidebar-col-2">
-            <h1 class="font-weight-bold text-center">WELCOME JULIAN!</h1>
+          <div class="col-sm-4 mt-4 welcome-shadow">
+            <h1 class="font-weight-bold text-center no-gutters">WELCOME JULIAN!</h1>
           </div>
         </div>
   
         <!--TODO javascript to test if it can add rows.-->
         <div class="page-body container disable-scroll g-0">
           <div class="row mt-4 ml-2 table-responsive">
-            <h1 class="mb-4">Transactions History</h1>
+            <h4 class="mb-4">Transactions History</h4>
             <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-              <table class="text-center transaction-table table table-success table-bordered border-dark" id="user-transactions">
+              <table id="transaction-table" class="text-center table table-success table-bordered border-dark" id="user-transactions">
                 <thead>
                   <tr>
-                    <th scope="col">Date</th>
+                    <th scope="col">Appointment ID</th>
+                    <th scope="col">Date Done</th>
                     <th scope="col">Time</th>
                     <th scope="col">Doctor</th>
-                    <th scope="col">Pet</th>
                     <th scope="col">Findings</th>
                     <th scope="col">Medicine</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">28/09/2022</th>
+                    <th scope="row">#4734623</th>
+                    <td>28/09/2022</td>
                     <td>9:30 AM</td>
                     <td>Dr. Octavius</td>
-                    <td>Ruffles</td>
                     <td>Ebola</td>
                     <td>Anti-Ebola</td>
                   </tr>
                   <tr>
-                    <th scope="row">28/09/2022</th>
+                    <th scope="row">#2344342</th>
+                    <td>28/09/2022</td>
                     <td>9:30 AM</td>
                     <td>Dr. Octavius</td>
-                    <td>Ruffles</td>
                     <td>Ebola</td>
                     <td>Anti-Ebola</td>
                   </tr>
                   <tr>
-                    <th scope="row">28/09/2022</th>
+                    <th scope="row">#5475845</th>
+                    <td>28/09/2022</td>
                     <td>9:30 AM</td>
                     <td>Dr. Octavius</td>
-                    <td>Ruffles</td>
                     <td>Ebola</td>
                     <td>Anti-Ebola</td>
                   </tr>
