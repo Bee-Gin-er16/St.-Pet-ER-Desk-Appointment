@@ -1,0 +1,11 @@
+.box {
+    width: 60x;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.recommended-border {
+    border-radius: 20px;
+}

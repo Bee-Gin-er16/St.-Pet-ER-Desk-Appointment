@@ -75,11 +75,15 @@
               </div>
               <!--TODO make genders into dropdown-->
               <div class="col-md-4">
-                <input class="wid-90" type="text" placeholder="Male/Female" name="pet-gender" id="pet-gender" required>
+                <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="pet-gender">
+                  <option selected>Pet Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
               </div>
             </div>
             <!--ROW 2-->
-            <div class="row marg-t2">
+            <div class="row">
               <div class="col-sm-2">
                 <label for="pet-type"><b>Breed: </b></label>
               </div>
@@ -143,7 +147,11 @@
                 <label for="Gender"><b>Gender: </b></label>
               </div>
               <div class="col-sm-3">
-                <input type="gender" placeholder="Male-Female" name="gender" id="gender" required>
+                <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="user-gender">
+                  <option selected>Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
               </div>
             </div>
             <!--ROW 3-->
@@ -241,16 +249,16 @@
           </div>
         </div>
       </div><hr>
-      <!--Terms and Aggreement-->
+      
       <div class="container text-center mt-4 pb-4">
-        <div class="checkbox">
+        <!-- <div class="checkbox">
             <input class="inline-elem" type="checkbox">
             <label class="h5">
                 By creating an account you agree to our <a href="#">Terms & Privacy</a>.
             </label>
-          </div>
+        </div> -->
         <button type="submit" class="btn-lg btn-success mt-4 wid-30 registerbtn">Register</button>
-        <!--Test if data is functional & can be obtained by queries-->
+        <!--Test if data is functional & can be obtained by queries: NVM it works-->
         <!-- <button type="submit" onclick="getdata()" class="btn-lg btn-info mt-4 wid-30 fetchbtn">Fetch JS Data Jquery (RESET)</button> -->
       </div>
 

@@ -9,3 +9,11 @@
 .left-indent-2{
     margin-left: -25px;
 }
+
+ul#scheduled-days li{
+    display: inline-block;
+}
+
+#scheduled-days li::before{
+    content: '\00a0\2022\00a0\00a0';
+}
