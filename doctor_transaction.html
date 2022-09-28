@@ -65,7 +65,7 @@
   
         <!--TODO javascript to test if it can add rows.-->
         <div class="page-body container disable-scroll g-0">
-            <div class="row mt-4 ml-2 table-responsive">
+            <div class="row mt-3 ml-2 table-responsive">
               <h4 class="mb-4">Transactions History</h4>
               <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="text-center transaction-table table table-success table-bordered border-dark" id="user-transactions">
@@ -79,7 +79,7 @@
                       <th scope="col">Medicine</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="t-body" data-toggle="collapse" data-target="#details">
                     <tr>
                       <th scope="row">#4734623</th>
                       <td>28/09/2022</td>
@@ -108,17 +108,22 @@
                 </table>
               </div>
               <!--border border-dark -->
-              <div id="details" class="collapse container bg-light p-5 mt-2">
-                <div class="row justify-content-around mb-2">
-                  <button class="col-sm-3 w-50 btn btn-accept">ACCEPT</button>
-                  <button class="col-sm-3 w-50 btn btn-reschedule">RESCHEDULE</button>
-                  <button class="col-sm-3 w-50 btn btn-cancel">CANCEL</button>
+              <div id="details" class="collapse container rounded text-light p-2 mt-2 custom-detail-container container-bg">
+                <div class="row justify-content-start mb-2 h5">
+                  <div class="col-sm-6">
+                    <label for class="">Findings:</label>
+                    <p id="transaction-findings">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for class="">Prescriptions:</label>
+                    <p id="transaction-prescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                  </div>
                 </div>
               </div>
+
             </div>
         </div>
     </div>
-
 </body>
 <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

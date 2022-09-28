@@ -16,3 +16,13 @@ tbody > tr:hover {background-color: #85e785;}
     display: block;
 }
 
+.custom-detail-container{
+    position: relative;
+    height:11.25rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.container-bg{
+    background-color: #8d9a8d;
+}
