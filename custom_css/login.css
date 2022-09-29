@@ -17,3 +17,9 @@
     width: 30%;
 }
 
+body{
+    background-image: url('/img/clouds.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
