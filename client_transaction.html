@@ -68,7 +68,7 @@
           <div class="row mt-3 ml-2 table-responsive">
             <label class="h4 mb-4">Transactions History</label>
             <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-              <table id="transaction-table" class="text-center table table-success table-bordered border-dark" id="user_transactions">
+              <table id="user_transactions" class="text-center table table-success table-bordered border-dark">
                 <thead>
                   <tr>
                     <th scope="col">Appointment ID</th>
@@ -77,24 +77,24 @@
                     <th scope="col">Doctor</th>
                   </tr>
                 </thead>
-                <tbody id="t-body" data-toggle="collapse" data-target="#details">
+                <tbody id="t-body" data-toggle="collapse" data-target="#appointment_details">
                   <tr id="finished_appointment_row">
                     <th id="appointment_id" scope="row">#4734623</th>
                     <td id="appointment_date">28/09/2022</td>
                     <td id="appointment_time">9:30 AM</td>
                     <td id="appointment_doctor">Dr. Octavius</td>
                   </tr>
-                  <tr>
-                    <th scope="row">#2344342</th>
-                    <td>28/09/2022</td>
-                    <td>9:30 AM</td>
-                    <td>Dr. Octavius</td>
+                  <tr id="finished_appointment_row">
+                    <th id="appointment_id" scope="row">#2344342</th>
+                    <td id="appointment_date">28/09/2022</td>
+                    <td id="appointment_time">9:30 AM</td>
+                    <td id="appointment_doctor">Dr. Octavius</td>
                   </tr>
-                  <tr>
-                    <th scope="row">#5475845</th>
-                    <td>28/09/2022</td>
-                    <td>9:30 AM</td>
-                    <td>Dr. Octavius</td>
+                  <tr id="finished_appointment_row">
+                    <th id="appointment_id" scope="row">#5475845</th>
+                    <td id="appointment_date">28/09/2022</td>
+                    <td id="appointment_time">9:30 AM</td>
+                    <td id="appointment_doctor">Dr. Octavius</td>
                   </tr>
                 </tbody>
               </table>
@@ -104,11 +104,11 @@
               <div class="row justify-content-start mb-2 h5">
                 <div class="col-sm-6">
                   <label for class="">Findings:</label>
-                  <p id="transaction-findings">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                  <p id="transaction_findings">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
                 </div>
                 <div class="col-sm-6">
                   <label for class="">Prescriptions:</label>
-                  <p id="transaction-prescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                  <p id="transaction_prescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
                 </div>
               </div>
             </div>

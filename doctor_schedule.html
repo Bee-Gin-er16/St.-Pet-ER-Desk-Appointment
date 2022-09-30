@@ -67,9 +67,9 @@
         <!--TODO javascript to test if it can add rows.-->
         <div class="page-body container disable-scroll g-0">
             <div class="row mt-4 ml-2 table-responsive">
-              <h4 class="mb-4">Schedules (Can only accept and complete one)</h4>
+              <h4 class="mb-4">Unanswered Appointments</h4>
               <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                <table id="transaction-table-doctor" class="text-center table table-success table-bordered border-dark" id="user-transactions">
+                <table id="appointments_table" class="text-center table table-success table-bordered border-dark" id="user-transactions">
                   <thead>
                     <tr>
                       <th scope="col">Appointment ID</th>
@@ -80,48 +80,49 @@
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
-                  <tbody id="t-body" data-toggle="collapse" data-target="#demo">
-                    <tr>
-                      <th scope="row">#4734623</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Peter Parker</td>
-                      <td>Ruffles</td>
-                      <td class="text-warning h5">STANDBY</td>
+                  <tbody id="t-body" data-toggle="collapse" data-target="#appointment_toggleprompt">
+                    <tr id="appointment_row">
+                      <th id="appointment_id" scope="row">#4734623</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Peter Parker</td>
+                      <td id="appointment_pet">Ruffles</td>
+                      <td id="appointment_status" class="text-warning h5">STANDBY</td>
                     </tr>
-                    <tr>
-                      <th scope="row">#2344342</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Penny Hofstader</td>
-                      <td>Ruffa</td>
-                      <td class="text-danger h5">CANCELLED</td>
+                    <tr id="appointment_row">
+                      <th id="appointment_id" scope="row">#2344342</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Penny Hofstader</td>
+                      <td id="appointment_pet">Ruffa</td>
+                      <td id="appointment_status" class="text-danger h5">CANCELLED</td>
                     </tr>
-                    <tr>
-                      <th scope="row">#5475845</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Sheldon Cooper</td>
-                      <td>Ruffles</td>
-                      <td class="text-success h5">ACCEPTED</td>
+                    <tr id="appointment_row">
+                      <th id="appointment_id" scope="row">#5475845</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Sheldon Cooper</td>
+                      <td id="appointment_pet">Ruffles</td>
+                      <td id="appointment_status" class="text-success h5">ACCEPTED</td>
                     </tr>
-                    <tr>
-                      <th scope="row">#9584372</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Allen Knight</td>
-                      <td>Ruffles</td>
-                      <td class="text-info h5">RESCHEDULED</td>
+                    <tr id="appointment-row">
+                      <th id="appointment_id" scope="row">#9584372</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Allen Knight</td>
+                      <td id="appointment_pet">Ruffles</td>
+                      <td id="appointment_status" class="text-info h5">RESCHEDULED</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <!--border border-dark -->
-              <div id="demo" class="collapse container mt-2 p-5">
+              <div id="appointment_toggleprompt" class="collapse container mt-2 p-3">
+                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id">appointment id here</span></h4>
                 <div class="row justify-content-around mb-2">
-                  <button class="col-sm-3 w-50 btn btn-accept">ACCEPT</button>
-                  <button class="col-sm-3 w-50 btn btn-reschedule">RESCHEDULE</button>
-                  <button class="col-sm-3 w-50 btn btn-cancel">CANCEL</button>
+                  <button id="accept_appointment" class="col-sm-3 w-50 btn btn-accept">ACCEPT</button>
+                  <button id="reschedule_appointment" class="col-sm-3 w-50 btn btn-reschedule">RESCHEDULE</button>
+                  <button id="cancel_appointment" class="col-sm-3 w-50 btn btn-cancel">CANCEL</button>
                 </div>
               </div>
             </div>

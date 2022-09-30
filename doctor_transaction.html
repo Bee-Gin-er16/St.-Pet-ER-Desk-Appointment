@@ -68,55 +68,47 @@
             <div class="row mt-3 ml-2 table-responsive">
               <h4 class="mb-4">Transactions History</h4>
               <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                <table class="text-center transaction-table table table-success table-bordered border-dark" id="user-transactions">
+                <table id="user_transactions" class="text-center transaction-table table table-success table-bordered border-dark">
                   <thead>
                     <tr>
                       <th scope="col">Appointment ID</th>
                       <th scope="col">Date Done</th>
                       <th scope="col">Time</th>
                       <th scope="col">Client</th>
-                      <th scope="col">Findings</th>
-                      <th scope="col">Medicine</th>
                     </tr>
                   </thead>
                   <tbody id="t-body" data-toggle="collapse" data-target="#details">
-                    <tr>
-                      <th scope="row">#4734623</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Peter Parker</td>
-                      <td>Ebola</td>
-                      <td>Anti-Ebola</td>
+                    <tr id="finished_appointment_row">
+                      <th id="appointment_id" scope="row">#4734623</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Peter Parker</td>
                     </tr>
-                    <tr>
-                      <th scope="row">#2344342</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Penny Hofstader</td>
-                      <td>Ebola</td>
-                      <td>Anti-Ebola</td>
+                    <tr id="finished_appointment_row">
+                      <th id="appointment_id" scope="row">#2344342</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Penny Hofstader</td>
                     </tr>
-                    <tr>
-                      <th scope="row">#5475845</th>
-                      <td>28/09/2022</td>
-                      <td>9:30 AM</td>
-                      <td>Sheldon Cooper</td>
-                      <td>Ebola</td>
-                      <td>Anti-Ebola</td>
+                    <tr id="finished_appointment_row">
+                      <th id="appointment_id" scope="row">#5475845</th>
+                      <td id="appointment_date">28/09/2022</td>
+                      <td id="appointment_time">9:30 AM</td>
+                      <td id="appointment_client">Sheldon Cooper</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <!--border border-dark -->
-              <div id="details" class="collapse container rounded text-light p-2 mt-2 custom-detail-container container-bg">
+              <div id="appointment_details" class="collapse container rounded text-light p-2 mt-2 custom-detail-container container-bg">
                 <div class="row justify-content-start mb-2 h5">
                   <div class="col-sm-6">
                     <label for class="">Findings:</label>
-                    <p id="transaction-findings">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                    <p id="transaction_findings">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
                   </div>
                   <div class="col-sm-6">
                     <label for class="">Prescriptions:</label>
-                    <p id="transaction-prescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
+                    <p id="transaction_prescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate maiores consequatur deleniti officia voluptatum suscipit cum quos, dolor iusto quod dolores tenetur eius, laboriosam nemo laborum adipisci, quibusdam voluptatem!</p>
                   </div>
                 </div>
               </div>
