@@ -68,47 +68,39 @@
           <div class="row mt-3 ml-2 table-responsive">
             <label class="h4 mb-4">Transactions History</label>
             <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-              <table id="transaction-table" class="text-center table table-success table-bordered border-dark" id="user-transactions">
+              <table id="transaction-table" class="text-center table table-success table-bordered border-dark" id="user_transactions">
                 <thead>
                   <tr>
                     <th scope="col">Appointment ID</th>
                     <th scope="col">Date Done</th>
                     <th scope="col">Time</th>
                     <th scope="col">Doctor</th>
-                    <th scope="col">Findings</th>
-                    <th scope="col">Medicine</th>
                   </tr>
                 </thead>
                 <tbody id="t-body" data-toggle="collapse" data-target="#details">
-                  <tr>
-                    <th scope="row">#4734623</th>
-                    <td>28/09/2022</td>
-                    <td>9:30 AM</td>
-                    <td>Dr. Octavius</td>
-                    <td>Ebola</td>
-                    <td>Anti-Ebola</td>
+                  <tr id="finished_appointment_row">
+                    <th id="appointment_id" scope="row">#4734623</th>
+                    <td id="appointment_date">28/09/2022</td>
+                    <td id="appointment_time">9:30 AM</td>
+                    <td id="appointment_doctor">Dr. Octavius</td>
                   </tr>
                   <tr>
                     <th scope="row">#2344342</th>
                     <td>28/09/2022</td>
                     <td>9:30 AM</td>
                     <td>Dr. Octavius</td>
-                    <td>Ebola</td>
-                    <td>Anti-Ebola</td>
                   </tr>
                   <tr>
                     <th scope="row">#5475845</th>
                     <td>28/09/2022</td>
                     <td>9:30 AM</td>
                     <td>Dr. Octavius</td>
-                    <td>Ebola</td>
-                    <td>Anti-Ebola</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <!--border border-dark -->
-            <div id="details" class="collapse container rounded text-light p-2 mt-2 custom-detail-container container-bg">
+            <div id="appointment_details" class="collapse container rounded text-light p-2 mt-2 custom-detail-container container-bg">
               <div class="row justify-content-start mb-2 h5">
                 <div class="col-sm-6">
                   <label for class="">Findings:</label>

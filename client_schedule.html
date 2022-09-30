@@ -77,13 +77,7 @@
                         <label for="Booked Date"><h4>Booking Date:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <input
-                          style="width: 100%; margin-left: 2px"
-                          type="date"
-                          placeholder="Select which date to admit"
-                          name="booking_date"
-                          id="booking_date"
-                        />
+                        <input style="width: 100%; margin-left: 2px;" type="date" placeholder="Select which date to admit" name="booking_date" id="booking_date"/>
                       </div>
                     </div>
                     <div class="row ml-4 mt-3 h4">
@@ -91,7 +85,7 @@
                         <label for="Booked Time"><h4>Booking Time:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="appointed-time">
+                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="booking-time">
                           <option selected>Select time from options</option>
                           <option value="08:30AM-09:30AM">8:30AM-9:30AM</option>
                           <option value="09:30AM-10:30AM">9:30AM-10:30AM</option>
@@ -113,7 +107,8 @@
                         <label for="Booked Date"><h4>Pet to diagnose:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <select class="form-select form-select-lg h5 mb-3 w-75" aria-label=".form-select-lg example" id="diagnose-pet">
+                        <select class="form-select form-select-lg h5 mb-3 w-75" aria-label=".form-select-lg example" id="diagnosed_pet">
+                          <!--palceholder only: comment/replace these options-->
                           <option selected>Select Pet</option>
                           <option value="OneFace">OneFace</option>
                           <option value="TwoFace">TwoFAce</option>
@@ -129,14 +124,14 @@
             <!--R2C2-->
             <div class="col-sm-4 mt-5 border border-info text-center recommended-border">
               <h4> Current Bookings This Week:</h4><hr>
-              <div class="container">
-                <div id="booking-row" class="row">
+              <div id="booking_container" class="container">
+                <div class="row">
                   <div class="col-sm-3">
-                    <h6 id="current-appointment-date" class="">22/10/2022:</h6>
+                    <h6 id="booking_date" class="">22/10/2022:</h6>
                   </div>
                   <div class="col-sm-9">
-                    <h6 id="appointed-time">9:30AM-10:30AM</h6>
-                    <h6 id="diagnosed-pet">Ruffles</h6>
+                    <h6 id="booking_time">9:30AM-10:30AM</h6>
+                    <h6 id="diagnosed_pet">Ruffles</h6>
                   </div>
                 </div>
               </div>

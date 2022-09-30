@@ -80,7 +80,7 @@
                         <label class="h5" for="Name">Name:</label>
                     </div>
                     <div class="col-sm-10">
-                        <h5 id="user-name" class="inline-elem">Meee Leee Seeeeeee e. Leeeeeeee</h5>
+                        <h5 id="user_real_name" class="inline-elem">Meee Leee Seeeeeee e. Leeeeeeee</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -88,11 +88,11 @@
                         <label class="h5" for="Gender">Gender:</label>
                     </div>
                     <div class="col-sm-3">
-                        <h5 id="user-gender" class="inline-elem">Male</h5>
+                        <h5 id="user_gender" class="inline-elem">Male</h5>
                     </div>
                     <div class="col-sm-4">
                         <label class="h5" for="Age">Age:</label>
-                        <h5 id="user-age" class="inline-elem">23</h5>
+                        <h5 id="user_age" class="inline-elem">23</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -100,7 +100,7 @@
                         <label class="h5" for="Contact">Contact:</label>
                     </div>
                     <div class="col-sm-3">
-                        <h5 id="user-contact" class="inline-elem">09177066008</h5>
+                        <h5 id="user_contact" class="inline-elem">09177066008</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -108,7 +108,7 @@
                         <label class="h5" for="Address">Address:</label>
                     </div>
                     <div class="col-sm-9">
-                        <h5 id="user-address" class="inline-elem">Brgy. Kamputhaw. San Isidro Labrador Princessa</h5>
+                        <h5 id="user_address" class="inline-elem">Brgy. Kamputhaw. San Isidro Labrador Princessa</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -116,7 +116,7 @@
                         <label class="h5" for="Email">Email:</label>
                     </div>
                     <div class="col-sm-10">
-                        <h5 id="user-contact" class="inline-elem">hanseubert@gmail.com</h5>
+                        <h5 id="user_email" class="inline-elem">hanseubert@gmail.com</h5>
                     </div>
                 </div>
                 
@@ -125,7 +125,7 @@
             <div class="col-md-6 mt-3 p-3">
                 <div class="row">
                     <div class="col-sm-12">
-                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="user-pets">
+                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="user_pets">
                             <option selected>Select Pet Profile</option>
                             <option value="OneFace">OneFace</option>
                             <option value="TwoFace">TwoFAce</option>
@@ -137,36 +137,38 @@
                 <div class="row d-flex justify-content-between">
                     <div class="col-sm-8 justify-content-start">
                         <label class="h5" for="Name">Name:</label>
-                        <h5 class="inline-elem" id="pet-name">Ruffles</h5>
+                        <h5 class="inline-elem" id="selected_pet_name">Ruffles</h5>
                     </div>
                     <div class="col-sm-4">
                         <label class="h5" for="Name">Gender:</label>
-                        <h5 class="inline-elem" id="pet-gender">Male</h5>
+                        <h5 class="inline-elem" id="selected_pet_gender">Male</h5>
                     </div>
                     <div class="col-sm-8 mt-2">
                         <label class="h5" for="Name">Pet Type:</label>
-                        <h5 class="inline-elem" id="pet-type">Domesticated</h5>
+                        <h5 class="inline-elem" id="selected_pet_type">Domesticated</h5>
                     </div>
                     <div class="col-sm-4 mt-2">
                         <label class="h5" for="Name">Age:</label>
-                        <h5 class="inline-elem" id="pet-age">22</h5>
+                        <h5 class="inline-elem" id="selected_pet_age">22</h5>
                     </div>
                     <div class="col-sm-8 mt-2">
                         <label class="h5" for="Name">Breed:</label>
-                        <h5 class="inline-elem" id="pet-breed">German Shepherd</h5>
+                        <h5 class="inline-elem" id="selected_pet_breed">German Shepherd</h5>
                     </div>
                     <div class="col-sm-8 mt-2">
-                        <label class="h5" for="Name">Size:</label>
-                        <p class="inline-elem h5" id="pet-height"><span>0 kg.</span></p>
-                        <p class="inline-elem h5" id="pet-weight"><span>0 in.</span></p>
+                        <label class="h5" for="Name">Weight:</label>
+                        <p class="inline-elem h5" id="selected_pet_weight"><span>kg.</span></p>
                     </div>
                     <div class="col-sm-12 mt-2">
                         <label class="h5" for="Name">This pet has taken the following vaccines:</label>
-                        <ul id="scheduled-days" class="h5 text-dark">
+                        <ul id="selected_pet_vaccines" class="h5 text-dark">
                             <li>Rabies</li>
                             <li>Parvovirus</li>
                             <li>Leptospirosis</li>
                         </ul>
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <button id="delete_pet_btn" class="btn btn-danger">Delete Toggled Pet</button>
                     </div>
                 </div>
             </div>

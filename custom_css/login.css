@@ -23,7 +23,7 @@ body{
     background-repeat: no-repeat;
 }
 
-#pet-landing{
+.pet-landing{
     background-image: url(/img/Dog.png), url(/img/cat.png);
     background-position: left, right;
     background-repeat: no-repeat, no-repeat;

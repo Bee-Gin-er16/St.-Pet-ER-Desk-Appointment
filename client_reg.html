@@ -131,7 +131,7 @@
                 <label for="Name"><b>Name: </b></label>
               </div>
               <div class="col-sm-10">
-                <input class="w-100" type="name" placeholder="Enter Doctor's Name" name="name" id="name" required>
+                <input class="w-100" type="name" placeholder="Enter Doctor's Name" name="name" id="user-real-name" required>
               </div>
             </div>
             <div class="row marg-t2">
@@ -139,7 +139,7 @@
                 <label for="Age"><b>Age: </b></label>
               </div>
               <div class="col-sm-3">
-                <input class="w-100" type="number" placeholder="Age" name="age" id="age" required>
+                <input class="w-100" type="number" placeholder="Age" name="age" id="user-age" required>
               </div>
               <div class="col-sm-2">
                 <label for="Gender"><b>Gender: </b></label>
@@ -157,7 +157,7 @@
                 <label for="Email Address"><b>Email:</b></label>
               </div>
               <div class="col-sm-9">
-                <input class="w-100" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="email-address" required>
+                <input class="w-100" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="user_email_address" required>
               </div>
             </div>
             <div class="row marg-t2">
@@ -165,7 +165,7 @@
                 <label for="Contact Number"><b>Contact No: </b></label>
               </div>
               <div class="col-sm-9">
-                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="contact-number" required>
+                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="user_contact_number" required>
               </div>
             </div>
             <div class="row marg-t2">
@@ -173,7 +173,7 @@
                 <label for="Contact Number"><b>Address: </b></label>
               </div>
               <div class="col-sm-9">
-                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="address" required>
+                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="user_address" required>
               </div>
             </div>
 
@@ -185,60 +185,42 @@
           <h1 class="text-center pt-3 pb-2">Current Pet Vaccinations</h1><hr>
           <div class="container col">
 
-            <div class="row">
+            <div class="row ml-4">
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Rabies" id="Rabies">
+                <input type="checkbox" class="form-check-input" value="Rabies" id="rabies">
                 <label for="Rabies" class="form-check-label">Rabies</label>
               </div>
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Distemper" id="Distemper">
+                <input type="checkbox" class="form-check-input" value="Distemper" id="distemper">
                 <label for="Distemper" class="form-check-label">Distemper</label>
               </div>
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Hepatitis/Adenovirus" id="Hepatitis/Adenovirus">
-                <label for="Hepatitis/Adenovirus" class="form-check-label">Hepatitis/Adenovirus</label>
+                <input type="checkbox" class="form-check-input" value="Hepatitis/Adenovirus" id="hepatitis">
+                <label for="Hepatitis/Adenovirus" class="form-check-label">Hepatitis</label>
               </div>
             </div>
-            <div class="row marg-t2">
+            <div class="row marg-t2 ml-4">
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Parvovirus" id="Parvovirus">
+                <input type="checkbox" class="form-check-input" value="Parvovirus" id="parvovirus">
                 <label for="Parvovirus" class="form-check-label">Parvovirus</label>
               </div>
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Parainfluenza" id="Parainfluenza">
+                <input type="checkbox" class="form-check-input" value="Parainfluenza" id="parainfluenza">
                 <label for="Parainfluenza" class="form-check-label">Parainfluenza</label>
               </div>
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Bordetella" id="Bordetella">
-                <label for="Bordetella" class="form-check-label">Bordetella</label>
+                <input type="checkbox" class="form-check-input" value="Bordetella" id="bordetella">
+                <label for="Bordetella" class="form-check-label">Leptospirosis</label>
               </div>
             </div>
-            <div class="row marg-t2">
+            <div class="row marg-t2 ml-4">
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Leptospirosis" id="Leptospirosis">
-                <label for="Leptospirosis" class="form-check-label">Leptospirosis</label>
+                <input type="checkbox" class="form-check-input" value="Leptospirosis" id="leptospirosis">
+                <label for="Leptospirosis" class="form-check-label">Deworming</label>
               </div>
               <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Lyme_Disease" id="Lyme_Disease">
-                <label for="Lyme_Disease" class="form-check-label">Lyme Disease</label>
-              </div>
-              <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Coronavirus" id="Coronavirus">
-                <label for="Coronavirus" class="form-check-label">Coronavirus</label>
-              </div>
-            </div>
-            <div class="row marg-t2">
-              <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Giardia" id="Giardia">
-                <label for="Giardia" class="form-check-label">Giardia</label>
-              </div>
-              <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Canine_Influenza_H3N8" id="Canine_Influenza_H3N8">
-                <label for="Canine_Influenza_H3N8" class="form-check-label">Canine Influenza H3N8</label>
-              </div>
-              <div class="col-sm-4">
-                <input type="checkbox" class="form-check-input" value="Rattlesnake_Vaccine" id="Rattlesnake_Vaccine">
-                <label for="Rattlesnake_Vaccine" class="form-check-label">Rattlesnake Vaccine</label>
+                <input type="checkbox" class="form-check-input" value="Rabies_Booster" id="rabies_booster">
+                <label for="Rabies" class="form-check-label">Rabies Booster</label>
               </div>
             </div>
 

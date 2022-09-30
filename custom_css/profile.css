@@ -17,3 +17,11 @@ ul#scheduled-days li{
 #scheduled-days li::before{
     content: '\00a0\2022\00a0\00a0';
 }
+
+ul#selected_pet_vaccines li{
+    display: inline-block;
+}
+
+#selected_pet_vaccines li::before{
+    content: '\00a0\2022\00a0\00a0';
+}

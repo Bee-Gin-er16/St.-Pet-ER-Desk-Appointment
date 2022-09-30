@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./custom_css/doctor.css">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
         <div class="container row">
           <div class="col-md-6">
             <a href="./log_in.html" class="navbar-brand mb-0 h1">
@@ -18,7 +18,8 @@
             </a>
           </div>
         </div>
-    </nav>
+    </nav> -->
+
     <form action="action_page.php">
         <!--BIG CONTAINER-->
         <div class="container text-center"> 
@@ -29,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-12 mt-2">
                     <label class="col-sm-2" for="User Name"><b>User Name: </b></label>
-                    <input class="col-md-3" type="text" placeholder="Enter User Name" name="user name" id="user-name" required>
+                    <input class="col-md-3" type="text" placeholder="Enter User Name" name="user name" id="user_name" required>
                 </div>
             </div>
             <div class="row">
@@ -55,19 +56,19 @@
                     <label for="Name"><b>Name: </b></label>
                 </div>
                 <div class="col-md-4">
-                    <input class="input-width" type="name" placeholder="Enter Doctor's Name" name="name" id="name" required>
+                    <input class="input-width" type="name" placeholder="Enter Doctor's Name" name="name" id="user_real_name" required>
                 </div>
                 <div class="col-sm-1">
                     <label for="Age"><b>Age: </b></label>
                 </div>
                 <div class="col-md-1">
-                    <input class="input-width" type="number" placeholder="Age" name="age" id="age" required>
+                    <input class="input-width" type="number" placeholder="Age" name="age" id="user_age" required>
                 </div>
                 <div class="col-sm-1">
                     <label for="Gender"><b>Gender: </b></label>
                 </div>
                 <div class="col-md-1">
-                    <input type="gender" placeholder="Male-Female" name="gender" id="gender" required>
+                    <input type="gender" placeholder="Male-Female" name="gender" id="user_gender" required>
                 </div>
             </div>
             <!--ROW 2-->
@@ -76,13 +77,13 @@
                     <label for="Email Address"><b>Email Address: </b></label>
                 </div>
                 <div class="col-md-4">
-                    <input class="input-width" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="email-address" required>
+                    <input class="input-width" type="email" class="" placeholder="Enter Doctor's Email Address" name="user_email_address" id="email_address" required>
                 </div>
                 <div class="col-sm-2">
                     <label for="Contact Number"><b>Contact No: </b></label>
                 </div>
                 <div class="col-md-4">
-                    <input class="input-width" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="contact-number" required>
+                    <input class="input-width" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="user_contact_number" required>
                 </div>
             </div>
             <!--ROW 3-->
@@ -91,13 +92,13 @@
                     <label for="Clinic Address"><b>Clinic Address: </b></label>
                 </div>
                 <div class="col-md-4">
-                    <input class="input-width" type="clinic address" placeholder="Enter Doctor's Clinic Address" name="clinic address" id="clinic-address" required>
+                    <input class="input-width" type="clinic address" placeholder="Enter Doctor's Clinic Address" name="user_clinic_address" id="clinic-address" required>
                 </div>
                 <div class="col-sm-2">
                     <label for="License Number"><b>License Number: </b></label>
                 </div>
                 <div class="col-md-4">
-                    <input class="input-width" type="license number" placeholder="Enter Doctor's License Number" name="license number" id="license-number" required>
+                    <input class="input-width" type="license number" placeholder="Enter Doctor's License Number" name="user_license_number" id="license-number" required>
                 </div>
             </div>
           </div><hr>
@@ -149,7 +150,7 @@
                 <div class="col-sm-6">
                     <form action="#">
                         <label for="timeslot">Time Slot</label>
-                        <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" id="appointed-time">
+                        <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" id="doctor_appointed_time">
                             <option selected>Select time from options</option>
                             <option value="08:30AM-11:30AM">08:30AM-11:30AM</option>
                             <option value="01:30PM-05:30PM">01:30PM-05:30PM</option>
@@ -166,7 +167,7 @@
                     By creating an account you agree to our <a href="#">Terms & Privacy</a>.
                 </label>
             </div> -->
-            <button type="submit" class="btn-lg btn-success mt-4 submit-width registerbtn">Register</button>
+            <button type="submit" class="btn-lg btn-success submit-width registerbtn">Register</button>
           </div>
           
         </div>
