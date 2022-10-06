@@ -18,13 +18,13 @@
 }
 
 body{
-    background-image: url('/img/clouds.avif');
+    background-image: url('/public/img/clouds.avif');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .pet-landing{
-    background-image: url(/img/Dog.png), url(/img/cat.png);
+    background-image: url(/public/img/Dog.png), url(/public/img/cat.png);
     background-position: left, right;
     background-repeat: no-repeat, no-repeat;
     background-size: contain;

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Registration</title>
+  <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/custom_css/client.css">
+</head>
+<body>
+  
+  <form action="action_page.php">
+    <div class="container">
+      <!--BIG ROW 1-->
+      <div class="row mr-4">
+
+        <!--FIRST COLUMN: CLIENT LOGIN CREDS-->
+        <div class="col-md-6">
+          <h1 class="text-center pt-3 pb-2">Client's Credentials</h1><hr>
+          <div class="container col marg-l2" >
+
+            <div class="row marg-t2">
+              <div class="col-sm-4">
+                <label for="User Name"><b>User Name: </b></label>
+              </div>
+              <div class="col-sm-8">
+                <input class="wid-90" type="text" placeholder="Enter User Name" name="user-name" id="user-name" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-4">
+                <label for="psw"><b>Password: </b></label>
+              </div>
+              <div class="col-sm-8">
+                <input class="wid-90" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-4">
+                <label for="psw-repeat"><b>Repeat Password: </b></label>
+              </div>
+              <div class="col-sm-8">
+                <input class="wid-90"
+                type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--SECOND COLUMN: FIRST PET INFORMATION-->
+        <div class="col-md-6">
+          <h1 class="text-center pt-3 pb-2">First Pet Registration</h1><hr>
+          <div class="container col marg-l2">
+
+            <div class="row marg-t2">
+              <div class="col-sm-2">
+                <label for="pet-name"><b>Name: </b></label>
+              </div>
+              <div class="col-md-4">
+                <input class="w-100" type="text" placeholder="Pet's Name" name="pet-name" id="pet-name" required>
+              </div>
+              <div class="col-sm-2">
+                <label for="pet-gender"><b>Gender: </b></label>
+              </div>
+              <div class="col-md-4">
+                <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="pet-gender">
+                  <option selected>Pet Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="pet-type"><b>Breed: </b></label>
+              </div>
+              <div class="col-md-4">
+                <input class="w-100" type="text" placeholder="Breed" name="pet-breed" id="pet-breed" required>
+              </div>
+              <div class="col-sm-2">
+                <label for="pet-type"><b>Age: </b></label>
+              </div>
+              <div class="col-md-4">
+                <input class="wid-90" type="number" placeholder="Age" name="pet-age" id="pet-age" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-2">
+                <label for="pet-type"><b>Type: </b></label>
+              </div>
+              <!--TODO make type into dropdown-->
+              <div class="col-md-4">
+                <input class="w-100" type="text" placeholder="Type" name="pet-type" id="pet-type" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-4">
+                <label for="pet-height"><b>Weight in pounds: </b></label>
+              </div>
+              <div class="col-md-6">
+                <input class="w-100" type="number" placeholder="Weight in pounds(Optional)" name="pet-weight" id="pet-weight">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><hr>
+      
+      <!--BIG ROW 2-->
+      <div class="row mr-4">
+        <!--FIRST COLUMN: OWNERS FULL INFO-->
+        <div class="col-md-6">
+          <h1 class="text-center pt-3 pb-2">Owner's info</h1><hr>
+          <div class="container col">
+
+            <div class="row">
+              <div class="col-sm-2">
+                <label for="Name"><b>Name: </b></label>
+              </div>
+              <div class="col-sm-10">
+                <input class="w-100" type="name" placeholder="Enter Doctor's Name" name="name" id="user-real-name" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-2">
+                <label for="Age"><b>Age: </b></label>
+              </div>
+              <div class="col-sm-3">
+                <input class="w-100" type="number" placeholder="Age" name="age" id="user-age" required>
+              </div>
+              <div class="col-sm-2">
+                <label for="Gender"><b>Gender: </b></label>
+              </div>
+              <div class="col-sm-3">
+                <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="user-gender">
+                  <option selected>Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-3">
+                <label for="Email Address"><b>Email:</b></label>
+              </div>
+              <div class="col-sm-9">
+                <input class="w-100" type="email" class="" placeholder="Enter Doctor's Email Address" name="email address" id="user_email_address" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-3">
+                <label for="Contact Number"><b>Contact No: </b></label>
+              </div>
+              <div class="col-sm-9">
+                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="user_contact_number" required>
+              </div>
+            </div>
+            <div class="row marg-t2">
+              <div class="col-sm-3">
+                <label for="Contact Number"><b>Address: </b></label>
+              </div>
+              <div class="col-sm-9">
+                <input class="w-100" type="tel" placeholder="Enter Doctor's Number" name="contact number" id="user_address" required>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--SECOND COLUMN: VACCINE INFO-->
+        <div class="col-md-6">
+          <h1 class="text-center pt-3 pb-2">Current Pet Vaccinations</h1><hr>
+          <div class="container col">
+
+            <div class="row ml-4">
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Rabies" id="rabies">
+                <label for="Rabies" class="form-check-label">Rabies</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Distemper" id="distemper">
+                <label for="Distemper" class="form-check-label">Distemper</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Hepatitis/Adenovirus" id="hepatitis">
+                <label for="Hepatitis/Adenovirus" class="form-check-label">Hepatitis</label>
+              </div>
+            </div>
+            <div class="row marg-t2 ml-4">
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Parvovirus" id="parvovirus">
+                <label for="Parvovirus" class="form-check-label">Parvovirus</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Parainfluenza" id="parainfluenza">
+                <label for="Parainfluenza" class="form-check-label">Parainfluenza</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Bordetella" id="bordetella">
+                <label for="Bordetella" class="form-check-label">Leptospirosis</label>
+              </div>
+            </div>
+            <div class="row marg-t2 ml-4">
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Leptospirosis" id="leptospirosis">
+                <label for="Leptospirosis" class="form-check-label">Deworming</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="checkbox" class="form-check-input" value="Rabies_Booster" id="rabies_booster">
+                <label for="Rabies" class="form-check-label">Rabies Booster</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div><hr>
+      
+      <div class="container text-center mt-4 pb-4">
+        <button type="submit" class="btn-lg btn-success mt-4 wid-30 registerbtn">Register</button>
+        <!-- <button type="submit" onclick="getdata()" class="btn-lg btn-info mt-4 wid-30 fetchbtn">Fetch JS Data Jquery (RESET)</button> -->
+      </div>
+
+    </div>
+    <!--END OF BIG CONTAINER-->
+  </form>
+</body>
+    <!--TODO FIND AN OFFLINE BOOTSTRAP SERVER-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--Test if data is functional & can be obtained by J-QUERIES: NVM IT WORKS-->
+    <script src="/public/custom_js/client.js"></script>
+
+</html>
