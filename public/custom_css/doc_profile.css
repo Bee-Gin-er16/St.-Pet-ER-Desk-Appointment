@@ -5,10 +5,10 @@
     width: 50px;
 }
 
-ul#scheduled-days li{
+ul#user_scheduled_days li{
     display: inline-block;
 }
 
-#scheduled-days li::before{
+#user_scheduled_days li::before{
     content: '\00a0\2022\00a0\00a0';
 }
