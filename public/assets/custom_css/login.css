@@ -24,7 +24,7 @@ body{
 }
 
 .pet-landing{
-    background-image: url(/public/img/Dog.png), url(/public/img/cat.png);
+    background-image: url("/assets/img/Dog.png"), url("/assets/img/cat.png");
     background-position: left, right;
     background-repeat: no-repeat, no-repeat;
     background-size: contain;
@@ -33,4 +33,16 @@ body{
 
 a {
     color: darkgreen;
+}
+
+.error-box {
+    border-radius: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffb3b3;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
 }

@@ -16,3 +16,9 @@ mao ni ang mga gamit kaayo sa general webdev, para nako:
 React:
 
 - ES7 Snippets
+
+To start the application:
+- npm start
+
+Backend Framework:
+ - Node JS

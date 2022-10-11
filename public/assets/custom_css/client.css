@@ -35,12 +35,28 @@
 }
 
 .theform{
-    background-image: url('/public/img/clouds.avif');
+    background-image: url('/assets/img/clouds.avif');
 }
 
 form{
-    background-image: url('/public/img/clouds.avif');
+    background-image: url('/assets/img/clouds.avif');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.error-msg {
+    color: red;
+}
+
+.error-box {
+    border-radius: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffb3b3;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
 }
 

@@ -1,5 +1,31 @@
 {
   "dependencies": {
-    "bootstrap": "^5.2.0"
-  }
+    "alert": "^5.1.1",
+    "bootstrap": "^5.2.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "firebase": "^9.10.0",
+    "firebase-admin": "^11.0.1",
+    "nodemon": "^2.0.20"
+  },
+  "name": "st.-pet-er",
+  "description": "Naa ray daghan sa youtube mga top extensions,",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bee-Gin-er16/St.-PET-ER.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bee-Gin-er16/St.-PET-ER/issues"
+  },
+  "homepage": "https://github.com/Bee-Gin-er16/St.-PET-ER#readme"
 }
