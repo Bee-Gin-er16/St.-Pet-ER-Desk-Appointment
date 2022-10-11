@@ -82,7 +82,7 @@ app.post("/submit-c-register", async (req,res) => {
             var petGender = req.body.petGender;
             var petAge = req.body.petAge;
             var petWeight = req.body.petWeight;
-            var vaccination = req.body.checked === undefined ? "" : req.body.checked.join(", ");
+            var vaccination = req.body.checked === undefined ? [] : req.body.checked;
             var username = req.body.username;
             var name = req.body.clientName;
             var userAge = req.body.clientAge;
@@ -256,6 +256,21 @@ app.get("/appointment", (req,res) => {
     if(req.session.isLoggedIn == true){
         console.log("Logged In")
         res.render("doctor_appointment", {username:req.session.username});
+    }else{
+        res.redirect("/");
+    }
+})
+
+app.get("/profile", async (req,res) => {
+    if(req.session.isLoggedIn == true) {
+        var page;
+        console.log(req.session.userData)
+        if(req.session.userData.type == "client"){
+            page = "client_profile";
+        }else{
+            page = "doctor_profile";
+        }
+        res.render(page, {userInfo:req.session.userData});
     }else{
         res.redirect("/");
     }

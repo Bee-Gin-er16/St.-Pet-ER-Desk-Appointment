@@ -8,14 +8,14 @@
     <title>Doctor Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/custom_css/dash.css">
-    <link rel="stylesheet" href="/public/custom_css/doc_profile.css">
+    <link rel="stylesheet" href="/assets/custom_css/dash.css">
+    <link rel="stylesheet" href="/assets/custom_css/doc_profile.css">
 </head>
 <body>
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
         <a href="#" class="navbar-brand text-light mt-2">
             <div class="h1 display-5 text-dark font-weight-bold">
-                <img src="/public/img/Logo .png" width="280" height="80" alt="logo" class="rounded">
+                <img src="/assets/img/Logo.png" width="280" height="80" alt="logo" class="rounded">
                 
             </div>
         </a>
@@ -39,14 +39,14 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/doctor_profile.ejs" class="nav-link tab-active text-dark pl-4 font-weight-bold">
+                <a href="profile" class="nav-link tab-active text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-plus"></i>
                     <span>Profile</span>
                 </a>
             </li>
             <!--TODO if anything happens during LOGIN and LOGOUT. try to remove href from this-->
             <li class="nav-item w-100">
-                <a href="/views/log_in.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="signout" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-arrow-left "></i>
                     <span>Logout</span>
                 </a>
@@ -60,7 +60,7 @@
               <h1 class="font-weight-bold text-center">DASHBOARD</h1>
             </div>
             <div class="col-sm-4 mt-4 welcome-shadow">
-              <h1 class="font-weight-bold text-center no-gutters">WELCOME JULIAN!</h1>
+              <h1 class="font-weight-bold text-center no-gutters">WELCOME, <%= userInfo.username %></h1>
             </div>
         </div>
   
@@ -76,13 +76,13 @@
                     <label class="h5" for="Name">Name: </label>
                 </div>
                 <div class="col-sm-7 justify-content-start">
-                    <h5 id="user_real_name" class="inline-elem text-info">Meee Leee Seeeeeee e. Leeeeeeee</h5>
+                    <h5 id="user_real_name" class="inline-elem text-info"><%= userInfo.name %></h5>
                 </div>
                 <div class="col-sm-1">
                     <label for="Age" class="h5 mr-3">Age: </label>
                 </div>
                 <div class="col-sm-2">
-                    <h5 id="user_age" class="inline-elem text-info">35</h5>
+                    <h5 id="user_age" class="inline-elem text-info"><%= userInfo.doctorAge %></h5>
                 </div>
             </div>
             <div class="row mt-3 ml-2">
@@ -90,13 +90,13 @@
                     <label for="Clinic Address" class="h5">Clinic Address: </label>
                 </div>
                 <div class="col-sm-7">
-                    <h5 id="user_clinic_address" class="inline-elem text-info">somewhere down the road st. Cebu Province</h5>
+                    <h5 id="user_clinic_address" class="inline-elem text-info"><%= userInfo.clinicAddress %></h5>
                 </div>
                 <div class="col-sm-1">
                     <label for="Contact No." class="h5">Contact:</label>
                 </div>
                 <div class="col-sm-1">
-                    <h5 id="user_contact" class="inline-elem text-info">09177066008</h5>
+                    <h5 id="user_contact" class="inline-elem text-info"><%= userInfo.contactNumber %></h5>
                 </div>
             </div>
             <div class="row mt-3 ml-2">
@@ -104,23 +104,23 @@
                     <label for="Email" class="h5">Email: </label>
                 </div>
                 <div class="col-sm-7">
-                    <h5 id="user_email" class="inline-elem text-info">sophiaandresgmail.com123</h5>
+                    <h5 id="user_email" class="inline-elem text-info"><%= userInfo.email %></h5>
                 </div>
                 <div class="col-sm-1">
                     <label for="License No." class="h5 mr-3">License:</label>
                 </div>
                 <div class="col-sm-1">
-                    <h5 id="user_license" class="inline-elem text-info">FHM-007</h5>
+                    <h5 id="user_license" class="inline-elem text-info"><%= userInfo.licenseNumber %></h5>
                 </div>
             </div>
             <!--Available Schedule-->
             <div class="row mt-4 ml-4">
                 <div class="col-sm-12">
-                    <h3>AVAILABLE SCHEDULE: <span class="text-info" id="user_timeslot">9:30 AM - 12:30 PM</span></h3>
+                    <h3>AVAILABLE SCHEDULE: <span class="text-info" id="user_timeslot"><%= userInfo.scheduleSlot %></span></h3>
                     <ul id="user_scheduled_days" class="h5 text-info">
-                        <li>Monday</li>
-                        <li>Tuesday</li>
-                        <li>Wednesday</li>
+                        <% for (var i=0; i< userInfo.scheduleDay.length; i++) {%>
+                        <li><%= userInfo.scheduleDay[i] %></li>
+                        <%}%>
                     </ul>
                 </div>
             </div>
