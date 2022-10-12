@@ -19,13 +19,13 @@
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
             <li class="nav-item w-100">
-                <a href="/views/client_schedule.ejs" class="item-margin nav-link text-dark pl-4 font-weight-bold">
+                <a href="/schedule" class="item-margin nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-calendar"></i>
                     <span>Book a Schedule</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/client_transaction.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="/transaction" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-list"></i>
                     <span>Transaction</span>
                 </a>
@@ -65,95 +65,106 @@
         <div class="page-body container disable-scroll g-0">
           <div class="row h5 mt-2 text-center">
             <!-- First column: add border to see the element full width -->
-            <div class="col-md-12">
-                <h4 class="mt-3 mb-3">ADD A NEW PET</h4>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label for="pet-name">Pet name:</label>  
+            <form action="submit-add-pet" method="POST">
+                <div class="col-md-12">
+                    <h4 class="mt-3 mb-3">ADD A NEW PET</h4>
+                    <% if(addStatus == "fail") {%>
+                        <div class = "error-box">
+                            <strong><%= addMessage %></strong>
+                        </div>
+                    <%}else if(addStatus == "success"){%>
+                        <div class = "success-box">
+                            <strong><%= addMessage %></strong>
+                        </div>
+                    <%} %>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="pet-name">Pet name:</label>  
+                        </div>
+                        <div class="col-sm-5">
+                            <input class="w-100" type="text" placeholder="Name of pet" name="petName" id="input_pet_name">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="pet-gender">Gender:</label>
+                            <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" name="petGender" id="input_pet_gender">
+                                <option selected>Gender select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-sm-5">
-                        <input class="w-100" type="text" placeholder="Name of pet" name="pet-name" id="input_pet_name">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="pet-type">Pet type:</label>  
+                        </div>
+                        <div class="col-sm-2">
+                            <select class="form-select form-select-lg mb-3 w-100" aria-label=".form-select-lg example" name="petType" id="input_pet_type">
+                                <option selected>Type of Pet</option>
+                                <option value="Domesticated">Domesticated</option>
+                                <option value="Wild">Wild</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="pet-gender">Age:</label>  
+                            <input class="w-50" type="number" placeholder="Age" name="petAge" id="input_pet_age" required>
+                        </div>
+                        <div class="col-sm-5">
+                            <label for="pet-weight">Weight:</label>
+                            <input class="w-50" type="number" placeholder="Optional(unit used lbs.)" name="petWeight" id="input_pet_weight">
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                        <label for="pet-gender">Gender:</label>
-                        <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" name="gender" id="input_pet_gender">
-                            <option selected>Gender select</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="pet-breed">Pet Breed:</label>  
+                        </div>
+                        <div class="col-sm-5">
+                            <input class="w-100" type="text" placeholder="Breed of pet" name="petBreed" id="input_pet_breed">
+                        </div>
                     </div>
+                    <h4 class="mt-2 mb-3">VACCINATIONS</h4>
+                    <!--ROW for Vaccinations-->
+                    <div class="row">
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Rabies" name="checked[]" id="rabies">
+                        <label for="Rabies" class="form-check-label">Rabies</label>
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Distemper" name="checked[]" id="distemper">
+                        <label for="Distemper" class="form-check-label">Distemper</label>
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Hepatitis" name="checked[]" id="hepatitis">
+                        <label for="Hepatitis" class="form-check-label">Hepatitis</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Parvovirus" name="checked[]" id="parvovirus">
+                        <label for="Parvovirus" class="form-check-label">Parvovirus</label>
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Parainfluenza" name="checked[]" id="parainfluenza">
+                        <label for="Parainfluenza" class="form-check-label">Parainfluenza</label>
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Leptospirosis" name="checked[]" id="leptospirosis">
+                        <label for="Leptospirosis" class="form-check-label">Leptospirosis</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Deworming" name="checked[]" id="deworming">
+                        <label for="Deworming" class="form-check-label">Deworming</label>
+                        </div>
+                        <div class="col-sm-4">
+                        <input type="checkbox" class="form-check-input" value="Rabies Booster" name="checked[]" id="rabies_booster">
+                        <label for="Rabies Booster" class="form-check-label">Rabies Booster</label>
+                        </div>
+                    </div>
+    
+                    <button type="submit" id="add_new_pet_button" class="btn-lg btn-success mt-4 w-25">Add New Pet</button>
                 </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label for="pet-type">Pet type:</label>  
-                    </div>
-                    <div class="col-sm-2">
-                        <select class="form-select form-select-lg mb-3 w-100" aria-label=".form-select-lg example" name="type" id="input_pet_type">
-                            <option selected>Type of Pet</option>
-                            <option value="Domesticated">Domesticated</option>
-                            <option value="Wild">Wild</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <label for="pet-gender">Age:</label>  
-                        <input class="w-50" type="number" placeholder="Age" name="pet-age" id="input_pet_age" required>
-                    </div>
-                    <div class="col-sm-5">
-                        <label for="pet-weight">Weight:</label>
-                        <input class="w-50" type="number" placeholder="Optional(unit used lbs.)" name="pet-weight" id="input_pet_weight">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label for="pet-breed">Pet Breed:</label>  
-                    </div>
-                    <div class="col-sm-5">
-                        <input class="w-100" type="text" placeholder="Breed of pet" name="pet-breed" id="input_pet_breed">
-                    </div>
-                </div>
-                <h4 class="mt-2 mb-3">VACCINATIONS</h4>
-                <!--ROW for Vaccinations-->
-                <div class="row">
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Rabies" id="rabies">
-                    <label for="Rabies" class="form-check-label">Rabies</label>
-                    </div>
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Distemper" id="distemper">
-                    <label for="Distemper" class="form-check-label">Distemper</label>
-                    </div>
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Hepatitis" id="hepatitis">
-                    <label for="Hepatitis" class="form-check-label">Hepatitis</label>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Parvovirus" id="parvovirus">
-                    <label for="Parvovirus" class="form-check-label">Parvovirus</label>
-                    </div>
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Parainfluenza" id="parainfluenza">
-                    <label for="Parainfluenza" class="form-check-label">Parainfluenza</label>
-                    </div>
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Leptospirosis" id="leptospirosis">
-                    <label for="Leptospirosis" class="form-check-label">Leptospirosis</label>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Deworming" id="deworming">
-                    <label for="Deworming" class="form-check-label">Deworming</label>
-                    </div>
-                    <div class="col-sm-4">
-                    <input type="checkbox" class="form-check-input" value="Rabies Booster" id="rabies_booster">
-                    <label for="Rabies Booster" class="form-check-label">Rabies Booster</label>
-                    </div>
-                </div>
-
-                <button type="submit" id="add_new_pet_button" class="btn-lg btn-success mt-4 w-25">Add New Pet</button>
-            </div>
+            </form>
           </div>
         </div>
 

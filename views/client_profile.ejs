@@ -19,13 +19,13 @@
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
             <li class="nav-item w-100">
-                <a href="/views/client_schedule.ejs" class="item-margin nav-link text-dark pl-4 font-weight-bold">
+                <a href="/schedule" class="item-margin nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-calendar"></i>
                     <span>Book a Schedule</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/client_transaction.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="transaction" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-list"></i>
                     <span>Transaction</span>
                 </a>
@@ -65,6 +65,15 @@
         <div class="page-body container disable-scroll g-0">
           <div class="row h4 mt-2">
             <!-- First column: add border to see the element full width -->
+            <% if(deleteStatus == "fail") {%>
+                <div class = "error-box">
+                    <strong><%= deleteMessage %></strong>
+                </div>
+            <%}else if(deleteStatus == "success"){%>
+                <div class = "success-box">
+                    <strong><%= deleteMessage %></strong>
+                </div>
+            <%} %>
             <div class="col-md-6 col-lg-6 p-3 mt-3">
                 <div class="row text-center">
                     <div class="col-sm-12 col-md-12">
@@ -133,9 +142,9 @@
                     </div>
                 </div>
 
-                <div class = "pet-info-content" id="pet-content">
-                    <%for(var i=0; i< userInfo.petInfo.length; i++) {%>
-                    <div class="row d-flex justify-content-between pet" id="<%= i %>">
+                <%for(var i=0; i< userInfo.petInfo.length; i++) {%>
+                <div class = "pet-info-content pet <%= i %>" id="pet-content">
+                    <div class="row d-flex justify-content-between">
                         <div class="col-sm-8 justify-content-start">
                             <label class="h5" for="Name">Name:</label>
                             <h5 class="inline-elem" id="selected_pet_name"><%= userInfo.petInfo[i].petName %></h5>
@@ -165,7 +174,7 @@
                             <% if(userInfo.petInfo[i].petVaccine.length != 0) {%>
                             <ul id="selected_pet_vaccines" class="h5 text-dark">
                                 <% for(var j=0; j< userInfo.petInfo[i].petVaccine.length; j++) {%>
-                                <li>userInfo.petInfo[i].petVaccine[j]</li>
+                                <li><%= userInfo.petInfo[i].petVaccine[j] %></li>
                                 <%}%>
                             </ul>
                             <%} else {%>
@@ -173,11 +182,11 @@
                             <%}%>
                         </div>
                         <div class="col-sm-12 mt-2">
-                            <button id="delete_pet_btn" class="btn-lg btn-danger">Delete Toggled Pet</button>
+                            <button id="delete_pet_btn" class="btn-lg btn-danger delete-btn" value="<%= i %>">Delete Toggled Pet</button>
                         </div>
                     </div>
-                    <%}%>
                 </div>
+                <%}%>
             </div>
           </div>
         </div>
@@ -191,8 +200,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 <!-- CUSTOM SCRIPTS -->
 <script src="/assets/custom_js/profileToggle.js"></script>
+<script src="/assets/custom_js/deletePet.js"></script>
 
 </html>

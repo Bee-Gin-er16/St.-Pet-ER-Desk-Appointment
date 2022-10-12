@@ -19,13 +19,13 @@
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
             <li class="nav-item w-100">
-                <a href="/views/client_schedule.ejs" class="item-margin tab-active nav-link text-dark pl-4 font-weight-bold">
+                <a href="/schedule" class="item-margin tab-active nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-calendar"></i>
                     <span>Book a Schedule</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/client_transaction.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="/transaction" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-list"></i>
                     <span>Transaction</span>
                 </a>
@@ -70,13 +70,13 @@
               <div class="row mt-5">
                 <div class="col-sm-12 col-md-12">
                   <!--TODO use forms to obtain data for appointment-->
-                  <form action="">
+                  <form action="submit-add-booking" method="POST">
                     <div class="row ml-4 mt-2 h4">
                       <div class="col-xs-6">
                         <label for="Booked Date"><h4>Booking Date:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <input style="width: 100%; margin-left: 2px;" type="date" placeholder="Select which date to admit" name="booking_date" id="booking_date"/>
+                        <input style="width: 100%; margin-left: 2px;" type="date" placeholder="Select which date to admit" name="bookingDate" id="booking_date"/>
                       </div>
                     </div>
                     <div class="row ml-4 mt-3 h4">
@@ -84,7 +84,7 @@
                         <label for="Booked Time"><h4>Booking Time:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" id="booking-time">
+                        <select class="form-select form-select-lg h5 mb-3 w-100" aria-label=".form-select-lg example" name="bookingTime" id="booking-time">
                           <option selected>Select time from options</option>
                           <option value="08:30AM-09:30AM">8:30AM-9:30AM</option>
                           <option value="09:30AM-10:30AM">9:30AM-10:30AM</option>
@@ -106,12 +106,12 @@
                         <label for="Booked Date"><h4>Pet to diagnose:</h4></label>
                       </div>
                       <div class="col-md-6 ml-4">
-                        <select class="form-select form-select-lg h5 mb-3 w-75" aria-label=".form-select-lg example" id="diagnosed_pet">
+                        <select class="form-select form-select-lg h5 mb-3 w-75" aria-label=".form-select-lg example" name="bookingPet" id="diagnosed_pet">
                           <!--palceholder only: comment/replace these options-->
-                          <option selected>Select Pet</option>
-                          <option value="OneFace">OneFace</option>
-                          <option value="TwoFace">TwoFAce</option>
-                          <option value="Three">Three</option>
+                          <option disabled>Select Pet</option>
+                          <% for(var i=0; i< userInfo.petInfo.length; i++) {%>
+                          <option value="<%= i %>"><%= userInfo.petInfo[i].petName %></option>
+                          <%}%>
                         </select>
                       </div>
                     </div>

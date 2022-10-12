@@ -33,6 +33,10 @@ var signupError = "";
 var signinError = "";
 var licenseError = "";
 var scheduleError = "";
+var addStatus = "";
+var addPetMessage = "";
+var deletePetMessage="";
+var deleteStatus;
 
 async function authenticateUser(req, res){
     var result = await db.collection("users").where('email','==',req.session.email).get();
@@ -51,6 +55,20 @@ async function authenticateUser(req, res){
     }else{
         signinError = "Invalid User!"
         res.redirect("/")
+    }
+}
+async function refreshData(req,res){
+    var result = await db.collection("users").where('email','==',req.session.email).get();
+    var resultArr = [];
+    result.forEach((doc)=> {
+        resultArr.push(doc.data());
+    })
+    if(resultArr != []){
+        req.session.userData = resultArr[0];
+        req.session.username = resultArr[0].username;
+        return true;
+    }else{
+        return false;
     }
 }
 
@@ -246,7 +264,7 @@ app.post("/authenticate", async (req,res) => {
 app.get ("/schedule", async (req,res) => {
     if(req.session.isLoggedIn == true){
         console.log("Logged In")
-        res.render("client_schedule", {username:req.session.username}); 
+        res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData}); 
     }else{
         res.redirect("/");
     }
@@ -263,14 +281,13 @@ app.get("/appointment", (req,res) => {
 
 app.get("/profile", async (req,res) => {
     if(req.session.isLoggedIn == true) {
-        var page;
-        console.log(req.session.userData)
         if(req.session.userData.type == "client"){
-            page = "client_profile";
+            res.render("client_profile", {userInfo:req.session.userData, deleteStatus:deleteStatus, deleteMessage:deletePetMessage})
+            deleteStatus="";
+            deletePetMessage="";
         }else{
-            page = "doctor_profile";
+            res.render("doctor_profile", {userInfo:req.session.userData})
         }
-        res.render(page, {userInfo:req.session.userData});
     }else{
         res.redirect("/");
     }
@@ -278,16 +295,126 @@ app.get("/profile", async (req,res) => {
 
 app.get("/add-pet", (req,res) => {
     if(req.session.isLoggedIn == true) {
-        res.render("client_add_pet", {userInfo:req.session.userData});
+        res.render("client_add_pet", {userInfo:req.session.userData, addStatus:addStatus, addMessage:addPetMessage});
+        addStatus = "";
+        addPetMessage = ""
     }else{
         res.redirect("/");
+    }
+})
+
+app.post("/submit-add-pet", async (req,res) => {
+    var petName = req.body.petName;
+    var petBreed = req.body.petBreed;
+    var petType = req.body.petType;
+    var petGender = req.body.petGender;
+    var petAge = req.body.petAge;
+    var petWeight = req.body.petWeight;
+    var vaccination = req.body.checked === undefined ? [] : req.body.checked;
+    const petJson = {
+        petName: petName,
+        petBreed: petBreed,
+        petType: petType,
+        petGender: petGender,
+        petAge: petAge,
+        petWeight: petWeight,
+        petVaccine: vaccination
+    }
+    await db.collection("users")
+            .where('email','==',req.session.email)
+            .get().then((querySnapshot) => {
+                querySnapshot.docs.forEach((document) => {
+                    document.ref.update({
+                        'petInfo': admin.firestore.FieldValue.arrayUnion(petJson)
+                    }).then((result) => {
+                        addStatus = "success"
+                        addPetMessage = "Pet has been successfully added. Check your profile to view details"
+                        refreshData(req,res).then((success) => {
+                            if(success) res.redirect("/add-pet")
+                        })
+                    }).catch(error => {
+                        console.log("Error", error);
+                        addPetMessage = "Unable to add pet. Please try again."
+                        addStatus = "fail"
+                        refreshData(req,res).then((success) => {
+                            res.redirect("/add-pet")
+                        })
+                    })
+                })
+    });
+})
+
+app.post("/delete-pet", async (req,res) => {
+    var index = parseInt(req.body.petIndex);
+    var petToDelete = req.session.userData.petInfo[index];
+    await db.collection("users")
+            .where('email','==',req.session.email)
+            .get().then((querySnapshot) => {
+                querySnapshot.docs.forEach((document) => {
+                    document.ref.update({
+                        'petInfo': admin.firestore.FieldValue.arrayRemove(petToDelete)
+                    }).then((result) => {
+                        deleteStatus = "success"
+                        deletePetMessage = "Pet record was deleted successfully."
+                    }).catch(error => {
+                        console.log("Error", error);
+                        deletePetMessage = "Unable to delete pet record. Please try again."
+                        deleteStatus = "fail"
+                        refreshData(req,res).then((success) => {
+                            res.redirect("/profile")
+                        })
+                    })
+                })
+    });
+    await refreshData(req,res).then((success) => {
+        // if(success) res.redirect("/profile")
+        console.log(req.session.userData)
+        res.redirect("/profile")
+    })
+})
+
+app.post("/submit-add-nooking", async (req,res) => {
+    var bookingDate = req.body.bookingDate;
+    var bookingTime = req.body.bookingTime;
+    var bookingTimestamp;
+    var bookingPet = req.body.bookingPet;
+    const bookingJson = {
+        bookingTimestamp: bookingTimestamp,
+        bookingPet: bookingPet
+    }
+    await db.collection("users")
+            .where('email','==',req.session.email)
+            .get().then((querySnapshot) => {
+                querySnapshot.docs.forEach((document) => {
+                    document.ref.update({
+                        'bookingList': admin.firestore.FieldValue.arrayRemove(petToDelete)
+                    }).then((result) => {
+                        deleteStatus = "success"
+                        deletePetMessage = "Pet record was deleted successfully."
+                    }).catch(error => {
+                        console.log("Error", error);
+                        deletePetMessage = "Unable to delete pet record. Please try again."
+                        deleteStatus = "fail"
+                        refreshData(req,res).then((success) => {
+                            res.redirect("/profile")
+                        })
+                    })
+                })
+    });
+})
+
+app.get("/transaction", (req,res) => {
+    if(req.session.isLoggedIn == true){
+        res.render("client_transaction", {userInfo:req.session.userData});
+    }else{  
+        res.redirect("/")
     }
 })
 
 app.get("/signout", (req,res) => {
     req.session.destroy();
     console.log("Logged out");
-    res.redirect("/")
+    // res.redirect("/")
 })
 
 
