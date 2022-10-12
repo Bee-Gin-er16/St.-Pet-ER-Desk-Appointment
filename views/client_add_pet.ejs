@@ -7,14 +7,14 @@
     <title>Pet Customization</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/custom_css/dash.css">
-    <link rel="stylesheet" href="/public/custom_css/add_pet.css">
+    <link rel="stylesheet" href="/assets/custom_css/dash.css">
+    <link rel="stylesheet" href="/assets/custom_css/add_pet.css">
 </head>
 <body>
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
         <a href="#" class="navbar-brand text-light mt-2">
             <div class="h1 display-5 text-dark font-weight-bold">
-                <img src="/public/img/Logo .png" width="280" height="80" alt="logo" class="rounded">
+                <img src="/assets/img/Logo.png" width="280" height="80" alt="logo" class="rounded">
             </div>
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/client_add_pet.ejs" class="tab-active nav-link text-dark pl-4 font-weight-bold">
+                <a href="add-pet" class="tab-active nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-plus"></i>
                     <span>Add Pet</span>
                 </a>
@@ -58,7 +58,7 @@
               <h1 class="font-weight-bold text-center">DASHBOARD</h1>
             </div>
             <div class="col-sm-4 mt-4 welcome-shadow">
-              <h1 class="font-weight-bold text-center no-gutters">WELCOME JULIAN!</h1>
+              <h1 class="font-weight-bold text-center no-gutters">WELCOME, <%= userInfo.username %>!</h1>
             </div>
         </div>
   

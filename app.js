@@ -276,11 +276,20 @@ app.get("/profile", async (req,res) => {
     }
 })
 
+app.get("/add-pet", (req,res) => {
+    if(req.session.isLoggedIn == true) {
+        res.render("client_add_pet", {userInfo:req.session.userData});
+    }else{
+        res.redirect("/");
+    }
+})
+
 app.get("/signout", (req,res) => {
     req.session.destroy();
     console.log("Logged out");
     res.redirect("/")
 })
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
