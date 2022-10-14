@@ -37,6 +37,8 @@ var addStatus = "";
 var addPetMessage = "";
 var deletePetMessage="";
 var deleteStatus;
+var addBookingMessage="";
+var addBookingStatus="";
 
 async function authenticateUser(req, res){
     var result = await db.collection("users").where('email','==',req.session.email).get();
@@ -72,7 +74,84 @@ async function refreshData(req,res){
     }
 }
 
-app.get("/", (req,res) => {
+async function validateDoctorScheduler(scheduleDay, scheduleTime)
+{
+    var result = await db.collection("users").where('scheduleDay','array-contains', scheduleDay).get();
+    var resultArr = [];
+    result.forEach((doc)=> {
+        if(doc.data().scheduleSlot.includes(scheduleTime)){
+            resultArr.push(doc.data());
+        }
+    })
+    return resultArr;
+}
+
+function convertTime (timeSlot)
+{
+    var hrs = Number(timeSlot.match(/^(\d+)/)[1]);
+    var mnts = Number(timeSlot.match(/:(\d+)/)[1]);
+    var format = timeSlot.match(/([AaPp][Mm])/)[1];
+    if (format == "PM" && hrs < 12) hrs = hrs + 12;
+    if (format == "AM" && hrs == 12) hrs = hrs - 12;
+    var hours = hrs.toString();
+    var minutes = mnts.toString();
+    if (hrs < 10) hours = "0" + hours;
+    if (mnts < 10) minutes = "0" + minutes;
+    var timeEnd = hours + ":" + minutes;
+    return timeEnd;
+}
+
+async function retrieveDoctorBySchedule(scheduleDay,scheduleTime)
+{   
+    var result = await db.collection("users")
+                         .where('scheduleDay','array-contains', scheduleDay)
+                         .get();
+    var resultArr = [];
+
+    result.forEach((doc)=> {
+        var convertedTime = convertTime(doc.data().scheduleSlot);
+        if(scheduleTime >= convertedTime && scheduleTime > "12:00"){
+            resultArr.push(doc.data());
+        }else if (scheduleTime <= convertedTime && scheduleTime < "12:00"){
+            resultArr.push(doc.data());
+        }
+    });
+    return resultArr[0];  
+}
+
+async function validateDuplicateBookings(bookingJson){
+    var result = await db.collection("users")
+                         .where('bookings','array-contains', bookingJson)
+                         .get();
+    console.log(bookingJson)
+    var resultArr = [];
+    result.forEach((doc)=> {
+        resultArr.push(doc.data());
+    });
+    return resultArr;
+}
+
+function retrieveBookingsThisWeek(req)
+{
+    var bookings = req.session.userData.bookings;
+    var curr = new Date; // get current date
+    var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
+    var last = first + 6; // last day is the first day + 6
+
+    var firstDay = new Date(curr.setDate(first)).setHours(0,0,0,0);
+    var lastDay = new Date(curr.setDate(last)).setHours(0,0,0,0);
+    var appointmentDate;
+    var bookingsThisWeek = [];
+    bookings.forEach((b)=> {
+        appointmentDate = b.dateOfAppointment.split(", ")[0];
+        if(appointmentDate >= firstDay && appointmentDate <= lastDay && b.bookingStatus == "confirmed"){
+            bookingsThisWeek.push(b);
+        }
+    })
+    return bookingsThisWeek;
+}
+
+app.get("/", async (req,res) => {
     res.render("log_in", {signinError: signinError});
     signinError = "";
 })
@@ -163,6 +242,8 @@ app.post("/submit-d-register", async (req,res) => {
     if (req.body.psw === req.body.pswrepeat) {
         try{
             var count = 0;
+            var schedCount = 0;
+            var dayTaken = [];
             var username = req.body.username;
             var name = req.body.name;
             var email = req.body.email;
@@ -183,7 +264,20 @@ app.post("/submit-d-register", async (req,res) => {
                 scheduleError = "Must pick at least one schedule day!"
                 count = count+1;
             }
-            if(count == 0) {
+            
+            scheduleDay.forEach((day) => {
+                var isValid = validateDoctorScheduler(day, scheduleSlot);
+                if(isValid.length != 0){
+                    schedCount = schedCount + 1;
+                    dayTaken.push(day)
+                }
+            })
+
+            if(schedCount > 0){
+                signupError = "Sorry. The schedule "+dayTaken.join()+" at "+scheduleSlot+" has already been taken. Please try another schedule";
+            }
+
+            if(count == 0 && schedCount == 0) {
                 const doctorJson = {
                     username: username,
                     name: name,
@@ -264,7 +358,10 @@ app.post("/authenticate", async (req,res) => {
 app.get ("/schedule", async (req,res) => {
     if(req.session.isLoggedIn == true){
         console.log("Logged In")
-        res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData}); 
+        weekBookings = retrieveBookingsThisWeek(req);
+        res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData, addBookingMessage:addBookingMessage, addBookingStatus:addBookingStatus, weekBookings:weekBookings}); 
+        addBookingStatus = "";
+        addBookingMessage = "";
     }else{
         res.redirect("/");
     }
@@ -373,34 +470,60 @@ app.post("/delete-pet", async (req,res) => {
     })
 })
 
-app.post("/submit-add-nooking", async (req,res) => {
-    var bookingDate = req.body.bookingDate;
-    var bookingTime = req.body.bookingTime;
-    var bookingTimestamp;
+app.post("/submit-add-booking", async (req,res) => {
+    var bookingDate = new Date(req.body.bookingDate).toLocaleString('en-us', {  weekday: 'long' });
+    var bookingTime = convertTime(req.body.bookingTime);
     var bookingPet = req.body.bookingPet;
+    var retrievedDoctor = await retrieveDoctorBySchedule(bookingDate, bookingTime);
+    var currentDateTime = new Date();
+    var currentDate = (currentDateTime.getFullYear()).toString()+"-"+(currentDateTime.getMonth()+1).toString()+"-"+(currentDateTime.getDate()).toString();
+    var petToBook = req.session.userData.petInfo[bookingPet];
     const bookingJson = {
-        bookingTimestamp: bookingTimestamp,
-        bookingPet: bookingPet
+        bookingDate: bookingDate,
+        bookingTime: req.body.bookingTime,
+        bookingPet: petToBook.petName,
+        dateOfAppointment: req.body.bookingDate + ", " + req.body.bookingTime ,
+        doctor: retrievedDoctor === undefined ? "" : retrievedDoctor.name,
+        bookingStatus: "pending",
+        dateBooked: currentDate
     }
-    await db.collection("users")
-            .where('email','==',req.session.email)
-            .get().then((querySnapshot) => {
+    if(retrievedDoctor !== undefined){
+        var isBookingValid = await validateDuplicateBookings(bookingJson);
+        console.log(isBookingValid.length)
+        if(isBookingValid.length == 0) {
+            bookingJson["dateBooked"]= currentDate;
+            await db.collection('users')
+            .where('petInfo', 'array-contains', petToBook)
+            .get().then((querySnapshot)=> {
                 querySnapshot.docs.forEach((document) => {
                     document.ref.update({
-                        'bookingList': admin.firestore.FieldValue.arrayRemove(petToDelete)
+                        'bookings': admin.firestore.FieldValue.arrayUnion(bookingJson)
                     }).then((result) => {
-                        deleteStatus = "success"
-                        deletePetMessage = "Pet record was deleted successfully."
-                    }).catch(error => {
-                        console.log("Error", error);
-                        deletePetMessage = "Unable to delete pet record. Please try again."
-                        deleteStatus = "fail"
+                        addBookingStatus = "success";
+                        addBookingMessage = "Added booking. Booking is pending Dr. "+retrievedDoctor.name;
                         refreshData(req,res).then((success) => {
-                            res.redirect("/profile")
+                            res.redirect("/schedule");
                         })
                     })
                 })
-    });
+            }).catch(error => {
+                addBookingMessage = "Unable to add booking. Please try again."
+                addBookingStatus = "fail";
+                refreshData(req,res).then((success) => {
+                    res.redirect("/schedule")
+                })
+            })
+        }else{
+            addBookingStatus = "fail";
+            addBookingMessage = "You have a pending booking for this pet. Please try for another schedule.";
+            res.redirect("/schedule");
+        }
+        
+    }else{
+        addBookingStatus = "fail";
+        addBookingMessage = "No doctor is available for that chosen schedule. Try another schedule instead.";
+        res.redirect("/schedule")
+    }
 })
 
 app.get("/transaction", (req,res) => {

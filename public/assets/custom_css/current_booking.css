@@ -9,3 +9,29 @@
 .recommended-border {
     border-radius: 20px;
 }
+
+.error-box {
+    border-radius: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffb3b3;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+.success-box {
+    border-radius: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4de7a7;
+    color: green;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
