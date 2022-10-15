@@ -18,19 +18,19 @@
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
             <li class="nav-item w-100">
-                <a href="/views/doctor_appointment.ejs" class="item-margin tab-active nav-link text-dark pl-4 font-weight-bold">
+                <a href="/appointment" class="item-margin tab-active nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-calendar"></i>
                     <span>Current Appointment</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/doctor_transaction.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="/transaction" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-list"></i>
                     <span>Doctor's Transaction</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/doctor_schedule.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="/schedule" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-user"></i>
                     <span>Schedule</span>
                 </a>
@@ -63,78 +63,94 @@
   
         <!--TODO javascript to test if it can add rows.-->
         <div class="page-body container disable-scroll g-0">
+            <% if(appointments.length > 0) {%>
             <div class="row ml-2 mr-2 mt-4">
                 <!--Border it to determine distances: border border-danger-->
                 <div class="col-sm-6">
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col-sm-5">
                             <h5 class="font-weight-bold">Appointment ID:</h5>
                         </div>
                         <div class="col-sm-7">
-                            <select style="display: inline-block;" class="w-75 h6" name="doctor's-appointments" id="doctor_appointments">
-                                <option value="appointment-1">APT_1</option>
-                                <option value="appointment-2">APT_2</option>
+                            <select style="display: inline-block;" class="w-75 h6" name="doctor's-appointments" id="doctor-appointments">
+                                <option disabled>Select Appointment</option>
+                                <% for(var i = 0; i < appointments.length; i++) {%>
+                                    <% if(appointments[i].status == "CONFIRMED") {%> 
+                                    <option value="<%= i %>"><%= appointments[i].appointmentID %></option>
+                                    <%}%>
+                                <%}%>
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4">
-                            <h5 class="font-weight-bold">Client's Name: </h5>
-                        </div>
-                        <div class="col-sm-8">
-                            <h5 id="appointment_client_name">Meeee Lee Seeeeeee R. Leeeeeeee</h5>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4">
-                            <h5 class="font-weight-bold">Name of Pet: </h5>
-                        </div>
-                        <div class="col-sm-8">
-                            <h5 id="appointment_client_pet">Ruffles</h5>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4">
-                            <h5 class="font-weight-bold">Type of Pet: </h5>
-                        </div>
-                        <div class="col-sm-8">
-                            <h5 id="appointment_client_pet_type">Domesticated</h5>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4">
-                            <h5 class="font-weight-bold">Breed: </h5>
-                        </div>
-                        <div class="col-sm-8">
-                            <h5 id="appointment_client_pet_breed">German Shepherd</h5>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4">
-                            <h5 class="font-weight-bold">Schedule: </h5>
-                        </div>
-                        <div class="col-sm-8">
-                            <h5 id="appointment_schedule">9:30 AM - 10:00 AM</h5>
-                        </div>
-                    </div>
                 </div>
-                
-                <!--Border it to determine distances: border border-success-->
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-12 ">
-                            <form action="">
-                                <h4>FINDINGS:</h4>
-                                <textarea class="rounded" placeholder="Describe your diagnosis" name="findings" id="doctor_findings" cols="67" rows="5"></textarea>
-                                <h4>PRESCRIPTION:</h4>
-                                <textarea class="rounded" placeholder="Prescribe medicines" name="prescription" id="doctor_prescription" cols="67" rows="5"></textarea>
-                                <button type="submit" id="confirm_details_button" class="btn-lg btn-success mt-4 wid-30">Confirm</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
+                
+            <!--Border it to determine distances: border border-success-->
+            <% for(var i = 0; i < appointments.length; i++) {%>
+                <% if(appointments[i].status == "CONFIRMED") {%> 
+                <div class = "appointment-content appointment <%= i %>">
+                    <div class="row ml-2 mr-2 mt-2">
+                        <div class = "col-sm-6">
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h5 class="font-weight-bold">Client's Name: </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 id="appointment-client-name"><%= appointments[i].clientName %></h5>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h5 class="font-weight-bold">Name of Pet: </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 id="appointment_client_pet"><%= appointments[i].petName %></h5>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h5 class="font-weight-bold">Type of Pet: </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 id="appointment_client_pet_type"><%= appointments[i].petType %></h5>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h5 class="font-weight-bold">Breed: </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 id="appointment_client_pet_breed"><%= appointments[i].petBreed %></h5>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-4">
+                                    <h5 class="font-weight-bold">Schedule: </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5 id="appointment_schedule"><%= appointments[i].schedule %></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h4>FINDINGS<span class = "required">*</span>:</h4>
+                                    <textarea class="rounded findings-textarea findings" placeholder="Describe your diagnosis" name="findings" id="doctor_findings" cols="67" rows="5"></textarea>
+                                    <h4>PRESCRIPTION:</h4>
+                                    <textarea class="rounded findings-textarea prescription" placeholder="Prescribe medicines" name="prescription" id="doctor_prescription" cols="67" rows="5"></textarea>
+                                    <p class = "error-msg">Please fill up the required fields.</p>
+                                    <button type="button" id="confirm-details-button" class="btn-lg btn-success mt-2 wid-30" value = "<%= i %>">Confirm</button>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <%}%>
+            <%}%>
+            <%}else{%>
+                <div class="row ml-2 mr-2 mt-4 text-center"> No current appointments </div>
+            <%}%>
         </div>
     </div>
 
@@ -143,4 +159,12 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- CUSTOM SCRIPTS -->
+<script src="/assets/custom_js/appointmentToggle.js"></script>
+<script src="/assets/custom_js/updateAppointment.js"></script>
+
 </html>

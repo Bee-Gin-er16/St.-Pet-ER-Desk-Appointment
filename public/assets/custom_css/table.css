@@ -7,7 +7,7 @@ tbody > tr:hover {background-color: #85e785;}
 
 .my-custom-scrollbar {
     position: relative;
-    height: 200px;
+    height: 15rem;
     overflow: auto;
 }
 
@@ -17,11 +17,21 @@ tbody > tr:hover {background-color: #85e785;}
 
 .custom-detail-container{
     position: relative;
-    height:11.25rem;
+    height:10rem;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .container-bg{
     background-color: #8d9a8d;
+}
+
+.finished-transaction-conclusion,
+.finished-transaction-conclusion-header {
+    background-color: #8d9a8d;
+    color: white;
+}
+
+.finished-transaction-conclusion {
+    text-align: left;
 }

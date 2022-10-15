@@ -39,6 +39,8 @@ var deletePetMessage="";
 var deleteStatus;
 var addBookingMessage="";
 var addBookingStatus="";
+var updateBookingStatus="";
+var updateBookingMessage="";
 
 async function authenticateUser(req, res){
     var result = await db.collection("users").where('email','==',req.session.email).get();
@@ -123,7 +125,6 @@ async function validateDuplicateBookings(bookingJson){
     var result = await db.collection("users")
                          .where('bookings','array-contains', bookingJson)
                          .get();
-    console.log(bookingJson)
     var resultArr = [];
     result.forEach((doc)=> {
         resultArr.push(doc.data());
@@ -131,8 +132,7 @@ async function validateDuplicateBookings(bookingJson){
     return resultArr;
 }
 
-function retrieveBookingsThisWeek(req)
-{
+function retrieveBookingsThisWeek(req){
     var bookings = req.session.userData.bookings;
     var curr = new Date; // get current date
     var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
@@ -142,13 +142,65 @@ function retrieveBookingsThisWeek(req)
     var lastDay = new Date(curr.setDate(last)).setHours(0,0,0,0);
     var appointmentDate;
     var bookingsThisWeek = [];
-    bookings.forEach((b)=> {
-        appointmentDate = b.dateOfAppointment.split(", ")[0];
-        if(appointmentDate >= firstDay && appointmentDate <= lastDay && b.bookingStatus == "confirmed"){
-            bookingsThisWeek.push(b);
+    if(bookings !== undefined){
+        bookings.forEach((b)=> {
+            appointmentDate = b.dateOfAppointment.split(", ")[0];
+            if(appointmentDate >= firstDay && appointmentDate <= lastDay && b.bookingStatus == "confirmed"){
+                bookingsThisWeek.push(b);
+            }
+        })
+    }
+    return bookingsThisWeek;
+}
+
+function generateAppointmentID(petName,dateOfAppointment,timeOfAppointment){
+    return "Apt_"+petName+"_"+Math.floor(Math.random()*(999-100+1)+100).toString()+dateOfAppointment.replace(/-/g,"");
+}
+
+async function retrieveAppointments(req,type,name){
+    var result = await db.collection("users")
+                         .where('type','==', type)
+                         .get();
+    var resultArr = [];
+    result.forEach((doc) => {
+        if(name != ""){
+            for (var i = 0; i< doc.data().bookings.length; i++){
+                var appointmentDetails = {
+                    doctor: name
+                }
+                if(doc.data().bookings[i].doctor == name){
+                    appointmentDetails["appointmentID"] = doc.data().bookings[i].appointmentID;
+                    appointmentDetails["clientName"] = doc.data().name;
+                    appointmentDetails["petName"] = doc.data().bookings[i].bookingPet;
+                    appointmentDetails["petType"] = doc.data().bookings[i].petType;
+                    appointmentDetails["petBreed"] = doc.data().bookings[i].petBreed;
+                    appointmentDetails["schedule"] = doc.data().bookings[i].dateOfAppointment;
+                    appointmentDetails["dateBooked"] = doc.data().bookings[i].dateBooked;
+                    appointmentDetails["time"] = doc.data().bookings[i].bookingTime;
+                    appointmentDetails["day"] = doc.data().bookings[i].bookingDate;
+                    appointmentDetails["doctor"] = doc.data().bookings[i].doctor;
+                    appointmentDetails["status"] = doc.data().bookings[i].bookingStatus.toUpperCase();
+                    appointmentDetails["petFindings"] = doc.data().bookings[i].petFindings;
+                    appointmentDetails["petPrescription"] = doc.data().bookings[i].petPrescription;
+                    resultArr.push(appointmentDetails);
+                }
+            }
+        }else{
+            resultArr = doc.data().bookings;
         }
     })
-    return bookingsThisWeek;
+    req.session.userData.appointments = resultArr;
+}
+
+async function retrieveClientBookings(req,clientName){
+    var result = await db.collection("users")
+                         .where('name','==', clientName)
+                         .get();
+    var resultArr = [];
+    result.forEach((doc) => {
+        resultArr.push(doc.data());
+    })
+    return resultArr[0].bookings;
 }
 
 app.get("/", async (req,res) => {
@@ -358,19 +410,29 @@ app.post("/authenticate", async (req,res) => {
 app.get ("/schedule", async (req,res) => {
     if(req.session.isLoggedIn == true){
         console.log("Logged In")
-        weekBookings = retrieveBookingsThisWeek(req);
-        res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData, addBookingMessage:addBookingMessage, addBookingStatus:addBookingStatus, weekBookings:weekBookings}); 
-        addBookingStatus = "";
-        addBookingMessage = "";
+        if(req.session.userData.type == "client"){
+            weekBookings = retrieveBookingsThisWeek(req);
+            res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData, addBookingMessage:addBookingMessage, addBookingStatus:addBookingStatus, weekBookings:weekBookings}); 
+            addBookingStatus = "";
+            addBookingMessage = "";
+        }else{
+            await retrieveAppointments(req,"client",req.session.userData.name);
+            res.render("doctor_schedule", {username:req.session.username, transaction:req.session.userData.appointments, updateBookingStatus:updateBookingStatus, updateBookingMessage:updateBookingMessage});
+            updateBookingStatus = "";
+            updateBookingMessage = "";
+        }
     }else{
         res.redirect("/");
     }
 })
 
-app.get("/appointment", (req,res) => {
+app.get("/appointment", async (req,res) => {
     if(req.session.isLoggedIn == true){
-        console.log("Logged In")
-        res.render("doctor_appointment", {username:req.session.username});
+        console.log("Logged In");
+        await retrieveAppointments(req,"client",req.session.userData.name);
+        res.render("doctor_appointment", {username:req.session.username, appointments: req.session.userData.appointments, updateBookingStatus:updateBookingStatus, updateBookingMessage:updateBookingMessage});
+        updateBookingStatus="";
+        updateBookingMessage="";
     }else{
         res.redirect("/");
     }
@@ -464,8 +526,6 @@ app.post("/delete-pet", async (req,res) => {
                 })
     });
     await refreshData(req,res).then((success) => {
-        // if(success) res.redirect("/profile")
-        console.log(req.session.userData)
         res.redirect("/profile")
     })
 })
@@ -478,10 +538,14 @@ app.post("/submit-add-booking", async (req,res) => {
     var currentDateTime = new Date();
     var currentDate = (currentDateTime.getFullYear()).toString()+"-"+(currentDateTime.getMonth()+1).toString()+"-"+(currentDateTime.getDate()).toString();
     var petToBook = req.session.userData.petInfo[bookingPet];
+    var appoinmentID = generateAppointmentID(petToBook.petName, req.body.bookingDate, req.body.bookingTime);
     const bookingJson = {
+        appointmentID: appoinmentID,
         bookingDate: bookingDate,
         bookingTime: req.body.bookingTime,
         bookingPet: petToBook.petName,
+        petType: petToBook.petType,
+        petBreed: petToBook.petBreed,
         dateOfAppointment: req.body.bookingDate + ", " + req.body.bookingTime ,
         doctor: retrievedDoctor === undefined ? "" : retrievedDoctor.name,
         bookingStatus: "pending",
@@ -489,7 +553,6 @@ app.post("/submit-add-booking", async (req,res) => {
     }
     if(retrievedDoctor !== undefined){
         var isBookingValid = await validateDuplicateBookings(bookingJson);
-        console.log(isBookingValid.length)
         if(isBookingValid.length == 0) {
             bookingJson["dateBooked"]= currentDate;
             await db.collection('users')
@@ -526,18 +589,122 @@ app.post("/submit-add-booking", async (req,res) => {
     }
 })
 
-app.get("/transaction", (req,res) => {
+app.get("/transaction", async (req,res) => {
     if(req.session.isLoggedIn == true){
-        res.render("client_transaction", {userInfo:req.session.userData});
+        if(req.session.userData.type == "client"){
+            await retrieveAppointments(req, req.session.userData.type,"")
+            res.render("client_transaction", {userInfo:req.session.userData, transaction: req.session.userData.appointments});
+        }else{
+            await retrieveAppointments(req, "client", req.session.userData.name)
+            res.render("doctor_transaction", {userInfo:req.session.userData, transaction: req.session.userData.appointments});
+        }
     }else{  
         res.redirect("/")
     }
 })
 
+app.post("/update-pet-appointment", async (req,res) => {
+    var index = parseInt(req.body.petIndex);
+    var findings = req.body.petFindings;
+    var prescription = req.body.petPrescription;
+    var clientName = req.body.clientName;
+    var bookingToDelete = await retrieveClientBookings(req,clientName);
+    bookingToDelete = bookingToDelete[index]
+    var bookingToUpdate = await retrieveClientBookings(req,clientName);
+    bookingToUpdate = bookingToUpdate[index]
+    bookingToUpdate["petFindings"] = findings;
+    bookingToUpdate["petPrescription"] = prescription;
+    bookingToUpdate.bookingStatus = "closed"
+    result = await db.collection("users")
+            .where('name','==',clientName)
+            .get().then((querySnapshot) => {
+                querySnapshot.docs.forEach((document) => {
+                    document.ref.update({
+                        'bookings': admin.firestore.FieldValue.arrayRemove(bookingToDelete),
+                    }).then((success1) => {
+                        document.ref.update({
+                            'bookings': admin.firestore.FieldValue.arrayUnion(bookingToUpdate)
+                        }).then((result) => {
+                            updateBookingStatus = "success"
+                            updateBookingMessage = "Successfully completed transaction."
+                        })
+                    }).catch(error => {
+                        console.log("Error", error);
+                        updateBookingMessage = "Unable to update findings. Please try again."
+                        updateBookingStatus = "fail"
+                        refreshData(req,res).then((success) => {
+                            res.redirect("/appointment")
+                        })
+                    })
+                })
+    });
+    await refreshData(req,res).then((success) => {
+        res.redirect("/appointment")
+    })
+})
+
+app.post("/update-status",async (req,res) => {
+    var index = parseInt(req.body.appointmentIndex);
+    var status = req.body.appointmentStatus;
+    var clientName = req.session.userData.appointments[index].clientName;
+    var bookingJson = {
+        appointmentID: req.session.userData.appointments[index].appointmentID,
+        bookingDate: req.session.userData.appointments[index].day,
+        bookingPet: req.session.userData.appointments[index].petName,
+        bookingStatus: req.session.userData.appointments[index].status.toLowerCase(),
+        bookingTime: req.session.userData.appointments[index].time,
+        dateBooked: req.session.userData.appointments[index].dateBooked,
+        dateOfAppointment: req.session.userData.appointments[index].schedule,
+        doctor: req.session.userData.appointments[index].doctor,
+        petBreed: req.session.userData.appointments[index].petBreed,
+        petType: req.session.userData.appointments[index].petType
+    }
+    if(req.session.userData.appointments[index].petFindings != undefined){
+        bookingJson["petFindings"] = req.session.userData.appointments[index].petFindings;
+    }
+    if(req.session.userData.appointments[index].petPrescription != undefined){
+        bookingJson["petPrescription"] = req.session.userData.appointments[index].petPrescription;
+    }
+    console.log("ORIG")
+    console.log(req.session.userData.appointments[index])
+    result = await db.collection("users")
+            .where('name','==',clientName)
+            .get().then((querySnapshot) => {
+                querySnapshot.docs.forEach((document) => {
+                    console.log("BEFORE")
+                    console.log(bookingJson)
+                    document.ref.update({
+                        'bookings': admin.firestore.FieldValue.arrayRemove(bookingJson),
+                    }).then((success1) => {
+                        bookingJson.bookingStatus = status;
+                        console.log("AFTER")
+                        console.log(bookingJson)
+                        document.ref.update({
+                            'bookings': admin.firestore.FieldValue.arrayUnion(bookingJson)
+                        }).then((result) => {
+                            updateBookingStatus = "success"
+                            updateBookingMessage = "Successfully updated status."
+                            refreshData(req,res);
+                        })
+                    }).catch(error => {
+                        console.log("Error", error);
+                        updateBookingMessage = "Unable to update status. Please try again."
+                        updateBookingStatus = "fail"
+                        refreshData(req,res).then((success) => {
+                            res.redirect("/schedule")
+                        })
+                    })
+                })
+    });
+    await refreshData(req,res).then((success) => {
+        res.redirect("/schedule")
+    })
+})
+
 app.get("/signout", (req,res) => {
     req.session.destroy();
     console.log("Logged out");
-    // res.redirect("/")
+    res.redirect("/")
 })
 
 

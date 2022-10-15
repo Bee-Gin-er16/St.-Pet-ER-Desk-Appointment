@@ -20,19 +20,19 @@
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
             <li class="nav-item w-100">
-                <a href="/views/doctor_appointment.ejs" class="item-margin nav-link text-dark pl-4 font-weight-bold">
+                <a href="/appointment" class="item-margin nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-calendar"></i>
                     <span>Current Appointment</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/doctor_transaction.ejs" class="nav-link text-dark pl-4 font-weight-bold">
+                <a href="/transaction" class="nav-link text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-list"></i>
                     <span>Doctor's Transaction</span>
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a href="/views/doctor_schedule.ejs" class="nav-link tab-active text-dark pl-4 font-weight-bold">
+                <a href="/schedule" class="nav-link tab-active text-dark pl-4 font-weight-bold">
                     <i width="10" height="10" class="fas fa-solid fa-user"></i>
                     <span>Schedule</span>
                 </a>
@@ -59,7 +59,7 @@
           <h1 class="font-weight-bold text-center">DASHBOARD</h1>
         </div>
         <div class="col-sm-4 mt-4 welcome-shadow">
-          <h1 class="font-weight-bold text-center no-gutters">WELCOME JULIAN!</h1>
+          <h1 class="font-weight-bold text-center no-gutters">WELCOME, <%= username %>!</h1>
         </div>
       </div>
   
@@ -67,6 +67,15 @@
         <div class="page-body container disable-scroll g-0">
             <div class="row mt-4 ml-2 table-responsive">
               <h4 class="mb-4">Unanswered Appointments</h4>
+              <% if(updateBookingStatus == "fail") {%>
+                <div class = "error-box">
+                    <strong><%= updateBookingMessage %></strong>
+                </div>
+              <%}else if(updateBookingStatus == "success"){%>
+                  <div class = "success-box">
+                      <strong><%= updateBookingMessage %></strong>
+                  </div>
+              <%} %>
               <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
                 <table id="appointments_table" class="text-center table table-success table-bordered border-dark" id="user-transactions">
                   <thead>
@@ -80,50 +89,30 @@
                     </tr>
                   </thead>
                   <tbody id="t-body" data-toggle="collapse" data-target="#appointment_toggleprompt">
-                    <tr id="appointment_row">
-                      <th id="appointment_id" scope="row">#4734623</th>
-                      <td id="appointment_date">28/09/2022</td>
-                      <td id="appointment_time">9:30 AM</td>
-                      <td id="appointment_client">Peter Parker</td>
-                      <td id="appointment_pet">Ruffles</td>
-                      <td id="appointment_status" class="text-warning h5">STANDBY</td>
+                    <% for(var i = 0; i< transaction.length; i++) {%>
+                    <tr id="<%= transaction[i].appointmentID %>-<%= transaction[i].status.toLowerCase() %>">
+                      <th class="appointment_id" scope="row"><%= transaction[i].appointmentID %></th>
+                      <td class="appointment_date"><%= transaction[i].schedule %></td>
+                      <td class="appointment_time"><%= transaction[i].time %></td>
+                      <td class="appointment_client"><%= transaction[i].clientName %></td>
+                      <td class="appointment_pet"><%= transaction[i].petName %></td>
+                      <td class="appointment-status <%= transaction[i].status.toLowerCase() %>" class="text-warning h5"><strong><%= transaction[i].status %></strong></td>
                     </tr>
-                    <tr id="appointment_row">
-                      <th id="appointment_id" scope="row">#2344342</th>
-                      <td id="appointment_date">28/09/2022</td>
-                      <td id="appointment_time">9:30 AM</td>
-                      <td id="appointment_client">Penny Hofstader</td>
-                      <td id="appointment_pet">Ruffa</td>
-                      <td id="appointment_status" class="text-danger h5">CANCELLED</td>
-                    </tr>
-                    <tr id="appointment_row">
-                      <th id="appointment_id" scope="row">#5475845</th>
-                      <td id="appointment_date">28/09/2022</td>
-                      <td id="appointment_time">9:30 AM</td>
-                      <td id="appointment_client">Sheldon Cooper</td>
-                      <td id="appointment_pet">Ruffles</td>
-                      <td id="appointment_status" class="text-success h5">ACCEPTED</td>
-                    </tr>
-                    <tr id="appointment-row">
-                      <th id="appointment_id" scope="row">#9584372</th>
-                      <td id="appointment_date">28/09/2022</td>
-                      <td id="appointment_time">9:30 AM</td>
-                      <td id="appointment_client">Allen Knight</td>
-                      <td id="appointment_pet">Ruffles</td>
-                      <td id="appointment_status" class="text-info h5">RESCHEDULED</td>
-                    </tr>
+                    <%}%>
                   </tbody>
                 </table>
               </div>
               <!--border border-dark -->
-              <div id="appointment_toggleprompt" class="collapse container mt-2 p-3">
-                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id">appointment id here</span></h4>
+              <% for(var i = 0; i< transaction.length; i++) {%>
+              <div id="<%= transaction[i].appointmentID %>-<%= transaction[i].status.toLowerCase() %>-options" class="transaction-options container mt-2 p-3">
+                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id"><%= transaction[i].appointmentID %></span></h4>
                 <div class="row justify-content-around mb-2">
-                  <button id="accept_appointment" class="col-sm-3 w-50 btn btn-accept">ACCEPT</button>
-                  <button id="reschedule_appointment" class="col-sm-3 w-50 btn btn-reschedule">RESCHEDULE</button>
-                  <button id="cancel_appointment" class="col-sm-3 w-50 btn btn-cancel">CANCEL</button>
+                  <button type="button" id="accept_appointment" class="col-sm-3 w-50 btn btn-accept option-btn" value = "<%= i %>">ACCEPT</button>
+                  <button type="button" id="reschedule_appointment" class="col-sm-3 w-50 btn btn-reschedule option-btn" value = "<%= i %>">RESCHEDULE</button>
+                  <button type="button" id="cancel_appointment" class="col-sm-3 w-50 btn btn-cancel option-btn" value = "<%= i %>">CANCEL</button>
                 </div>
               </div>
+              <%}%>
             </div>
         </div>
     </div>
@@ -149,4 +138,12 @@
   //   $('#transaction-table-doctor').DataTable();
   // });
 </script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- CUSTOM SCRIPT -->
+<script src="/assets/custom_js/toggleSchedule.js"></script>
+<script src="/assets/custom_js/updateStatus.js"></script>
+
 </html>
