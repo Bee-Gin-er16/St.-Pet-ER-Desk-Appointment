@@ -109,12 +109,15 @@ async function retrieveDoctorBySchedule(scheduleDay,scheduleTime)
                          .where('scheduleDay','array-contains', scheduleDay)
                          .get();
     var resultArr = [];
+    var schedule = scheduleTime.split("-")[0];
+    var convertedSchedule = convertTime(schedule)
 
     result.forEach((doc)=> {
-        var convertedTime = convertTime(doc.data().scheduleSlot);
-        if(scheduleTime >= convertedTime && scheduleTime > "12:00"){
-            resultArr.push(doc.data());
-        }else if (scheduleTime <= convertedTime && scheduleTime < "12:00"){
+        var startTime = doc.data().scheduleSlot.split("-")[0];
+        var endTime = doc.data().scheduleSlot.split("-")[1];
+        var convertedStartTime = convertTime(startTime);
+        var convertedEndTime = convertTime(endTime);
+        if(convertedSchedule >= convertedStartTime && convertedSchedule <= convertedEndTime){
             resultArr.push(doc.data());
         }
     });
@@ -154,7 +157,7 @@ function retrieveBookingsThisWeek(req){
 }
 
 function generateAppointmentID(petName,dateOfAppointment,timeOfAppointment){
-    return "Apt_"+petName+"_"+Math.floor(Math.random()*(999-100+1)+100).toString()+dateOfAppointment.replace(/-/g,"");
+    return "Apt_"+petName+"_"+dateOfAppointment.replace(/-/g,"")+timeOfAppointment.replace(/:/g,"").replace(/-/g,"").replace(/AM/g,"").replace(/PM/g,"");
 }
 
 async function retrieveAppointments(req,type,name){
@@ -532,9 +535,8 @@ app.post("/delete-pet", async (req,res) => {
 
 app.post("/submit-add-booking", async (req,res) => {
     var bookingDate = new Date(req.body.bookingDate).toLocaleString('en-us', {  weekday: 'long' });
-    var bookingTime = convertTime(req.body.bookingTime);
     var bookingPet = req.body.bookingPet;
-    var retrievedDoctor = await retrieveDoctorBySchedule(bookingDate, bookingTime);
+    var retrievedDoctor = await retrieveDoctorBySchedule(bookingDate, req.body.bookingTime);
     var currentDateTime = new Date();
     var currentDate = (currentDateTime.getFullYear()).toString()+"-"+(currentDateTime.getMonth()+1).toString()+"-"+(currentDateTime.getDate()).toString();
     var petToBook = req.session.userData.petInfo[bookingPet];
@@ -581,7 +583,6 @@ app.post("/submit-add-booking", async (req,res) => {
             addBookingMessage = "You have a pending booking for this pet. Please try for another schedule.";
             res.redirect("/schedule");
         }
-        
     }else{
         addBookingStatus = "fail";
         addBookingMessage = "No doctor is available for that chosen schedule. Try another schedule instead.";
@@ -665,20 +666,14 @@ app.post("/update-status",async (req,res) => {
     if(req.session.userData.appointments[index].petPrescription != undefined){
         bookingJson["petPrescription"] = req.session.userData.appointments[index].petPrescription;
     }
-    console.log("ORIG")
-    console.log(req.session.userData.appointments[index])
     result = await db.collection("users")
             .where('name','==',clientName)
             .get().then((querySnapshot) => {
                 querySnapshot.docs.forEach((document) => {
-                    console.log("BEFORE")
-                    console.log(bookingJson)
                     document.ref.update({
                         'bookings': admin.firestore.FieldValue.arrayRemove(bookingJson),
                     }).then((success1) => {
                         bookingJson.bookingStatus = status;
-                        console.log("AFTER")
-                        console.log(bookingJson)
                         document.ref.update({
                             'bookings': admin.firestore.FieldValue.arrayUnion(bookingJson)
                         }).then((result) => {
