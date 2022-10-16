@@ -181,9 +181,11 @@
                             <p class="h5"> None </p>
                             <%}%>
                         </div>
+                        <% if(userInfo.petInfo.length > 1) {%>
                         <div class="col-sm-12 mt-2">
                             <button id="delete_pet_btn" class="btn-lg btn-danger delete-btn" value="<%= i %>">Delete Toggled Pet</button>
                         </div>
+                        <%}%>
                     </div>
                 </div>
                 <%}%>

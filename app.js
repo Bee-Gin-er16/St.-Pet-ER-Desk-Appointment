@@ -1,3 +1,4 @@
+//============ PACKAGE IMPORTS ============//
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
@@ -8,6 +9,7 @@ const config = require("./config.json");
 const {initializeApp} = require('firebase/app');
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth');
 
+//============  INITIALIZATION (FIRESTORE AND SESSION) ============//
 const firebaseApp = initializeApp(config);
 admin.initializeApp({
     credential: admin.credential.cert(credentials)
@@ -28,6 +30,7 @@ app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+//============ VARIABLE DECLARATION ============//
 var errorMsg = "";
 var signupError = "";
 var signinError = "";
@@ -42,6 +45,10 @@ var addBookingStatus="";
 var updateBookingStatus="";
 var updateBookingMessage="";
 
+//============ FUNCTION DEFINITION ============//
+//Used to refresh details of client (like name, email, etc.)
+//During loading after registration and signin
+//to ensure that data is up-to-date
 async function authenticateUser(req, res){
     var result = await db.collection("users").where('email','==',req.session.email).get();
     var resultArr = [];
@@ -61,6 +68,9 @@ async function authenticateUser(req, res){
         res.redirect("/")
     }
 }
+
+//Used to refresh data of the user when there are major changes made
+//like delete a pet, add a booking, accept a transaction, etc.
 async function refreshData(req,res){
     var result = await db.collection("users").where('email','==',req.session.email).get();
     var resultArr = [];
@@ -76,10 +86,15 @@ async function refreshData(req,res){
     }
 }
 
+//Used during doctor registration 
+//in order to verify that no other doctor has taken the schedule
+//the user is signing up for
 async function validateDoctorScheduler(scheduleDay, scheduleTime)
 {
-    var result = await db.collection("users").where('scheduleDay','array-contains', scheduleDay).get();
     var resultArr = [];
+    var result = await db.collection("users")
+            .where('scheduleDay','array-contains', scheduleDay)
+            .get();
     result.forEach((doc)=> {
         if(doc.data().scheduleSlot.includes(scheduleTime)){
             resultArr.push(doc.data());
@@ -88,6 +103,9 @@ async function validateDoctorScheduler(scheduleDay, scheduleTime)
     return resultArr;
 }
 
+//Converts time to 24-hour format
+//Example#1: 08:30AM --> 08:30
+//Example#2: 01:30PM --> 13:30
 function convertTime (timeSlot)
 {
     var hrs = Number(timeSlot.match(/^(\d+)/)[1]);
@@ -103,6 +121,9 @@ function convertTime (timeSlot)
     return timeEnd;
 }
 
+//Used to retrieve the details of the doctor
+//that an appointment is assigned to when a client
+//makes a booking
 async function retrieveDoctorBySchedule(scheduleDay,scheduleTime)
 {   
     var result = await db.collection("users")
@@ -124,6 +145,9 @@ async function retrieveDoctorBySchedule(scheduleDay,scheduleTime)
     return resultArr[0];  
 }
 
+//Used to validate if there is already a booking 
+//that exists with the same details for a user
+//There should be no duplicate bookings
 async function validateDuplicateBookings(bookingJson){
     var result = await db.collection("users")
                          .where('bookings','array-contains', bookingJson)
@@ -135,6 +159,8 @@ async function validateDuplicateBookings(bookingJson){
     return resultArr;
 }
 
+//Retrieves the CONFIRMED bookings made by specific user
+//that are due the current week
 function retrieveBookingsThisWeek(req){
     var bookings = req.session.userData.bookings;
     var curr = new Date; // get current date
@@ -145,9 +171,10 @@ function retrieveBookingsThisWeek(req){
     var lastDay = new Date(curr.setDate(last)).setHours(0,0,0,0);
     var appointmentDate;
     var bookingsThisWeek = [];
-    if(bookings !== undefined){
+    if(bookings != undefined){
         bookings.forEach((b)=> {
             appointmentDate = b.dateOfAppointment.split(", ")[0];
+            appointmentDate = new Date(appointmentDate).setHours(0,0,0,0);
             if(appointmentDate >= firstDay && appointmentDate <= lastDay && b.bookingStatus == "confirmed"){
                 bookingsThisWeek.push(b);
             }
@@ -156,10 +183,15 @@ function retrieveBookingsThisWeek(req){
     return bookingsThisWeek;
 }
 
+//Genereates the appointment ID assigned to the different appointments
 function generateAppointmentID(petName,dateOfAppointment,timeOfAppointment){
     return "Apt_"+petName+"_"+dateOfAppointment.replace(/-/g,"")+timeOfAppointment.replace(/:/g,"").replace(/-/g,"").replace(/AM/g,"").replace(/PM/g,"");
 }
 
+//Retrieves all the appointments
+//If type == "client", it retrieves all bookings for that client
+//If type == "doctor", it retrieves all bookings confirmed by that doctor 
+//and includes the name of the client for that booking
 async function retrieveAppointments(req,type,name){
     var result = await db.collection("users")
                          .where('type','==', type)
@@ -167,25 +199,27 @@ async function retrieveAppointments(req,type,name){
     var resultArr = [];
     result.forEach((doc) => {
         if(name != ""){
-            for (var i = 0; i< doc.data().bookings.length; i++){
-                var appointmentDetails = {
-                    doctor: name
-                }
-                if(doc.data().bookings[i].doctor == name){
-                    appointmentDetails["appointmentID"] = doc.data().bookings[i].appointmentID;
-                    appointmentDetails["clientName"] = doc.data().name;
-                    appointmentDetails["petName"] = doc.data().bookings[i].bookingPet;
-                    appointmentDetails["petType"] = doc.data().bookings[i].petType;
-                    appointmentDetails["petBreed"] = doc.data().bookings[i].petBreed;
-                    appointmentDetails["schedule"] = doc.data().bookings[i].dateOfAppointment;
-                    appointmentDetails["dateBooked"] = doc.data().bookings[i].dateBooked;
-                    appointmentDetails["time"] = doc.data().bookings[i].bookingTime;
-                    appointmentDetails["day"] = doc.data().bookings[i].bookingDate;
-                    appointmentDetails["doctor"] = doc.data().bookings[i].doctor;
-                    appointmentDetails["status"] = doc.data().bookings[i].bookingStatus.toUpperCase();
-                    appointmentDetails["petFindings"] = doc.data().bookings[i].petFindings;
-                    appointmentDetails["petPrescription"] = doc.data().bookings[i].petPrescription;
-                    resultArr.push(appointmentDetails);
+            if(doc.data().bookings != undefined){
+                for (var i = 0; i< doc.data().bookings.length; i++){
+                    var appointmentDetails = {
+                        doctor: name
+                    }
+                    if(doc.data().bookings[i].doctor == name){
+                        appointmentDetails["appointmentID"] = doc.data().bookings[i].appointmentID;
+                        appointmentDetails["clientName"] = doc.data().name;
+                        appointmentDetails["petName"] = doc.data().bookings[i].bookingPet;
+                        appointmentDetails["petType"] = doc.data().bookings[i].petType;
+                        appointmentDetails["petBreed"] = doc.data().bookings[i].petBreed;
+                        appointmentDetails["schedule"] = doc.data().bookings[i].dateOfAppointment;
+                        appointmentDetails["dateBooked"] = doc.data().bookings[i].dateBooked;
+                        appointmentDetails["time"] = doc.data().bookings[i].bookingTime;
+                        appointmentDetails["day"] = doc.data().bookings[i].bookingDate;
+                        appointmentDetails["doctor"] = doc.data().bookings[i].doctor;
+                        appointmentDetails["status"] = doc.data().bookings[i].bookingStatus.toUpperCase();
+                        appointmentDetails["petFindings"] = doc.data().bookings[i].petFindings;
+                        appointmentDetails["petPrescription"] = doc.data().bookings[i].petPrescription;
+                        resultArr.push(appointmentDetails);
+                    }
                 }
             }
         }else{
@@ -195,6 +229,9 @@ async function retrieveAppointments(req,type,name){
     req.session.userData.appointments = resultArr;
 }
 
+//Retrieves a client bookings
+//Used for when the application needs to find the details 
+//of the booking when deleting or updating a bookin
 async function retrieveClientBookings(req,clientName){
     var result = await db.collection("users")
                          .where('name','==', clientName)
@@ -206,6 +243,7 @@ async function retrieveClientBookings(req,clientName){
     return resultArr[0].bookings;
 }
 
+//============ START OF ROUTING ============//
 app.get("/", async (req,res) => {
     res.render("log_in", {signinError: signinError});
     signinError = "";
@@ -320,13 +358,13 @@ app.post("/submit-d-register", async (req,res) => {
                 count = count+1;
             }
             
-            scheduleDay.forEach((day) => {
-                var isValid = validateDoctorScheduler(day, scheduleSlot);
+            for(var i=0; i<scheduleDay.length; i++){
+                var isValid = await validateDoctorScheduler(scheduleDay[i],scheduleSlot);
                 if(isValid.length != 0){
                     schedCount = schedCount + 1;
-                    dayTaken.push(day)
+                    dayTaken.push(scheduleDay[i])
                 }
-            })
+            }
 
             if(schedCount > 0){
                 signupError = "Sorry. The schedule "+dayTaken.join()+" at "+scheduleSlot+" has already been taken. Please try another schedule";
