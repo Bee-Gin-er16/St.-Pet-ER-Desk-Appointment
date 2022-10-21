@@ -198,6 +198,7 @@ async function retrieveAppointments(req,type,name){
                          .get();
     var resultArr = [];
     result.forEach((doc) => {
+        console.log(doc.data())
         if(name != ""){
             if(doc.data().bookings != undefined){
                 for (var i = 0; i< doc.data().bookings.length; i++){
@@ -223,9 +224,14 @@ async function retrieveAppointments(req,type,name){
                 }
             }
         }else{
-            resultArr = doc.data().bookings;
+            if(doc.data().bookings != undefined){
+                if(doc.data().email == req.session.email){
+                    resultArr = doc.data().bookings;
+                }
+            }
         }
     })
+    console.log("KAPOY",resultArr)
     req.session.userData.appointments = resultArr;
 }
 
@@ -630,6 +636,8 @@ app.post("/submit-add-booking", async (req,res) => {
 
 app.get("/transaction", async (req,res) => {
     if(req.session.isLoggedIn == true){
+        console.log(req.session.userData);
+
         if(req.session.userData.type == "client"){
             await retrieveAppointments(req, req.session.userData.type,"")
             res.render("client_transaction", {userInfo:req.session.userData, transaction: req.session.userData.appointments});
