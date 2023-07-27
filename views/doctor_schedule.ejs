@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="my-sidebar">
         <a href="#" class="navbar-brand text-light mt-2">
             <div class="h1 display-5 text-dark font-weight-bold">
-              <img src="/assets/img/Logo.png" width="280" height="80" alt="logo" class="rounded">
+              <img src="/assets/img/pawsitive_consultations.png" width="280" height="80" alt="logo" class="rounded">
             </div>
         </a>
         <ul class="navbar-nav d-flex flex-column mt-5 w-100">
@@ -89,8 +89,9 @@
                     </tr>
                   </thead>
                   <tbody id="t-body" data-toggle="collapse" data-target="#appointment_toggleprompt">
-                    <% for(var i = 0; i< transaction.length; i++) {%>
-                    <tr id="<%= transaction[i].appointmentID %>-<%= transaction[i].status.toLowerCase() %>">
+                    <% for(var i = 0; i< transaction.length; i++) {
+                      if (transaction[i].status.toLowerCase() === 'pending') { %>
+                    <tr id="<%= transaction[i].appointmentID %>-<%= transaction[i].status.toLowerCase() %>" onclick="toggleappointmentID(this.id);">
                       <th class="appointment_id" scope="row"><%= transaction[i].appointmentID %></th>
                       <td class="appointment_date"><%= transaction[i].schedule %></td>
                       <td class="appointment_time"><%= transaction[i].time %></td>
@@ -98,14 +99,15 @@
                       <td class="appointment_pet"><%= transaction[i].petName %></td>
                       <td class="appointment-status <%= transaction[i].status.toLowerCase() %>" class="text-warning h5"><strong><%= transaction[i].status %></strong></td>
                     </tr>
-                    <%}%>
+                    <% } } %>
                   </tbody>
                 </table>
               </div>
+              
               <!--border border-dark -->
               <% for(var i = 0; i< transaction.length; i++) {%>
               <div id="<%= transaction[i].appointmentID %>-<%= transaction[i].status.toLowerCase() %>-options" class="transaction-options container mt-2 p-3">
-                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id"><%= transaction[i].appointmentID %></span></h4>
+                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id toggled_apt_id"><%= transaction[i].appointmentID %></span></h4>
                 <div class="row justify-content-around mb-2">
                   <button type="button" id="accept_appointment" class="col-sm-3 w-50 btn btn-accept option-btn" value = "<%= i %>">ACCEPT</button>
                   <button type="button" id="reschedule_appointment" class="col-sm-3 w-50 btn btn-reschedule option-btn" value = "<%= i %>">RESCHEDULE</button>
@@ -113,6 +115,33 @@
                 </div>
               </div>
               <%}%>
+
+              <!--My rendition of accept/decline-->
+              <!-- <div class="transaction-options container mt-2 p-3">
+                <h4 class="mb-3">Toggled Appointment ID: <span class="appointment_id toggled_apt_id"></span></h4>
+                <div class="row justify-content-around mb-2">
+                  <button type="button" id="accept_appointment" class="col-sm-3 w-50 btn btn-accept option-btn" value = "accept" onclick="ping('Accepted')">ACCEPT</button>
+                  <button type="button" id="reschedule_appointment" class="col-sm-3 w-50 btn btn-reschedule option-btn" value = "reschedule" onclick="ping('Rescheduled')">RESCHEDULE</button>
+                  <button type="button" id="cancel_appointment" class="col-sm-3 w-50 btn btn-cancel option-btn" value = "cancel>" onclick="ping('Cancelled')">CANCEL</button>
+                </div>
+              </div> -->
+
+              <!--Script for clicking a specific appointment in a selected row-->
+              <script>
+                let toggled_id = "";
+                function toggleappointmentID(id){
+                  toggled_id=id;
+                  var apt_id_toggle = document.querySelector('span.toggled_apt_id').innerHTML=id;
+                  console.log('Transaction ID toggled: ' +id);
+                }
+
+                function ping(str){
+                  if(toggled_id.length === 0) return alert('SELECT one of your appointments currently listed')
+                  var msg = "Appointment ID: " +toggled_id+ " \nCurrently " +str ;
+                  alert(msg); 
+                }
+
+              </script>
             </div>
         </div>
     </div>

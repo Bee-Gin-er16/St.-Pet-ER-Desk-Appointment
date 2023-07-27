@@ -18,9 +18,10 @@
 }
 
 body{
-    background-image: url('/assets/img/clouds.avif');
+    background-image: url('/assets/img/sunset.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 200);
 }
 
 .pet-landing{
@@ -45,4 +46,8 @@ a {
     padding: 20px;
     text-align: center;
     margin-top: 3%;
+}
+
+h1, h2, h3, label{
+    color: rgb(241, 255, 240);
 }

@@ -456,6 +456,7 @@ app.get ("/schedule", async (req,res) => {
             res.render("client_schedule", {username:req.session.username, userInfo: req.session.userData, addBookingMessage:addBookingMessage, addBookingStatus:addBookingStatus, weekBookings:weekBookings}); 
             addBookingStatus = "";
             addBookingMessage = "";
+            console.log("Retrieved approved appointments");
         }else{
             await retrieveAppointments(req,"client",req.session.userData.name);
             res.render("doctor_schedule", {username:req.session.username, transaction:req.session.userData.appointments, updateBookingStatus:updateBookingStatus, updateBookingMessage:updateBookingMessage});
