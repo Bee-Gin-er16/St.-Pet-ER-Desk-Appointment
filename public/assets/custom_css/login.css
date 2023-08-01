@@ -25,7 +25,7 @@ body{
 }
 
 .pet-landing{
-    background-image: url("/assets/img/Dog.png"), url("/assets/img/cat.png");
+    /* background-image: url("/assets/img/Dog.png"), url("/assets/img/cat.png"); */
     background-position: left, right;
     background-repeat: no-repeat, no-repeat;
     background-size: contain;
