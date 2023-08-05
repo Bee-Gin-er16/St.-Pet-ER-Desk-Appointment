@@ -19,7 +19,7 @@
                   <strong><%= signupError %></strong>
                 </div>
             <% } %>
-          <h1 class="text-center ">Doctor's Credentials</h1><hr>
+          <h1 class="text-center pt-3 pb-2">DOCTOR'S CREDENTIALS</h1><hr>
           <!--CREDENTIAL LOGIN INPUTS HERE-->
           <div class="container col">
             <div class="row">
@@ -43,7 +43,7 @@
             <p class = "error-msg"><%= errormsg %></p>
           </div><hr>
       
-          <h1 class="text-center mt-2">Doctor's Information</h1><hr>
+          <h1 class="text-center mt-2 pt-3 pb-2">DOCTOR'S INFORMATION</h1><hr>
           <!--DOCTOR'S INFORMATION INPUTS HERE-->
           <div class="container col text-center">
             <!--ROW 1-->
@@ -64,8 +64,8 @@
                     <label for="Gender"><b>Gender: </b></label>
                 </div>
                 <select class="form-select form-select-sm h5 mb-3 w-30" aria-label=".form-select-lg example" name="doctorGender" id="doctor_appointed_time">
-                    <option selected>Gender</option>
-                    <option value="Male">Male</option>
+                    <!-- <option selected>Gender</option> -->
+                    <option value="Male" selected>Male</option>
                     <option value="Female">Female</option>
                 </select>
             </div>
@@ -102,7 +102,7 @@
             </div>
           </div><hr>
           
-          <h1 class="text-center mt-3">Available Schedule:</h1><hr>
+          <h1 class="text-center mt-3">AVAILABLE SCHEDULE</h1><hr>
           <!--SCHED INPUT CONTAINER HERE-->
           <div class="container">
             <!--BIG ROW-->
@@ -148,10 +148,10 @@
                 <!--DROPDOWN LIST COLUMN 3-->
                 <div class="col-sm-6">
                     <form action="#">
-                        <label for="timeslot">Time Slot</label>
+                        <label for="timeslot">Time Slot:</label>
                         <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" name="scheduleSlot" id="doctor_appointed_time">
-                            <option selected>Select time from options</option>
-                            <option value="08:30AM-11:30AM">08:30AM-11:30AM</option>
+                            <!-- <option selected>Select time from options</option> -->
+                            <option value="08:30AM-11:30AM" selected>08:30AM-11:30AM</option>
                             <option value="01:30PM-05:30PM">01:30PM-05:30PM</option>
                         </select>
                     </form>

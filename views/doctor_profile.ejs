@@ -56,10 +56,10 @@
 
     <div class="page-content">
         <div class="border-box row">
-            <div class="col-sm-3 mt-4 welcome-shadow">
-              <h1 class="font-weight-bold text-center">DASHBOARD</h1>
+            <div class="col-md-2 mt-4 welcome-shadow">
+              <h1 class="font-weight-bold text-center pl-5">DASHBOARD</h1>
             </div>
-            <div class="col-sm-4 mt-4 welcome-shadow">
+            <div class="col-md-6 mt-4 welcome-shadow">
               <h1 class="font-weight-bold text-center no-gutters">WELCOME, <%= userInfo.username %></h1>
             </div>
         </div>
@@ -114,8 +114,8 @@
                 </div>
             </div>
             <!--Available Schedule-->
-            <div class="row mt-4 ml-4">
-                <div class="col-sm-12">
+            <div class="row mt-4 ml-2">
+                <div class="col-sm-6">
                     <h3>AVAILABLE SCHEDULE: <span class="text-info" id="user_timeslot"><%= userInfo.scheduleSlot %></span></h3>
                     <ul id="user_scheduled_days" class="h5 text-info">
                         <% for (var i=0; i< userInfo.scheduleDay.length; i++) {%>

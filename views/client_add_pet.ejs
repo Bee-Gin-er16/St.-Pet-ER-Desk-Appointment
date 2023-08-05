@@ -54,10 +54,10 @@
 
     <div class="page-content">
         <div class="border-box row">
-            <div class="col-sm-3 mt-4 welcome-shadow">
-              <h1 class="font-weight-bold text-center">DASHBOARD</h1>
+            <div class="col-md-2 mt-4 welcome-shadow">
+              <h1 class="font-weight-bold text-center pl-5">DASHBOARD</h1>
             </div>
-            <div class="col-sm-4 mt-4 welcome-shadow">
+            <div class="col-md-6 mt-4 welcome-shadow">
               <h1 class="font-weight-bold text-center no-gutters">WELCOME, <%= userInfo.username %>!</h1>
             </div>
         </div>
@@ -84,11 +84,11 @@
                         <div class="col-sm-5">
                             <input class="w-100" type="text" placeholder="Name of pet" name="petName" id="input_pet_name">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <label for="pet-gender">Gender:</label>
                             <select class="form-select form-select-lg h5 mb-3 w-50" aria-label=".form-select-lg example" name="petGender" id="input_pet_gender">
-                                <option selected>Gender select</option>
-                                <option value="Male">Male</option>
+                                <!-- <option selected>Gender select</option> -->
+                                <option value="Male" selected >Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
@@ -99,8 +99,8 @@
                         </div>
                         <div class="col-sm-2">
                             <select class="form-select form-select-lg mb-3 w-100" aria-label=".form-select-lg example" name="petType" id="input_pet_type">
-                                <option selected>Type of Pet</option>
-                                <option value="Domesticated">Domesticated</option>
+                                <!-- <option selected>Type of Pet</option> -->
+                                <option value="Domesticated" selected >Domesticated</option>
                                 <option value="Wild">Wild</option>
                             </select>
                         </div>
