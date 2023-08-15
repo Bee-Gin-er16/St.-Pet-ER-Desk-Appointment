@@ -6,7 +6,7 @@
 
 body {
   min-height: 100vh;
-  background-color: rgba(126, 69, 9, 0.1);
+  background-color: rgba(10, 210, 140, 0.1);
   /* overflow-x: hidden; */
 }
 
@@ -17,7 +17,7 @@ body {
   width: 390px;
   height: 100vh;
   position: fixed;
-  background-color: white;
+  background-color: rgb(237, 232, 232);
   transition: 0.4s;
 }
 
@@ -31,7 +31,7 @@ body {
 .nav-link:focus,
 .nav-link:hover {
   box-shadow: 10px 10px 5px black;
-  background-color: rgba(126, 46, 9, 0.5);
+  background-color: rgba(234, 234, 15, 0.5);
 }
 
 .navbar-nav > li {
@@ -92,10 +92,11 @@ li a span {
   width: 110%;
   height: 130px;
   top: 122px;
-  background: rgba(126, 79, 9, 0.2);
+  background: #7cbb6e;
   margin-left: -405px;
   margin-right: 0;
   position: fixed;
+  opacity: 0.9;
   z-index: 1;
 }
 

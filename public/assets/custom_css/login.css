@@ -18,6 +18,7 @@
 }
 
 body{
+    overflow-y: hidden;
     background-image: url('/assets/img/sunset.png');
     background-size: cover;
     background-repeat: no-repeat;
