@@ -1,5 +1,23 @@
-# St.-PET-ER (Beta name as joke)
+# St.-PET-ER (abbrev: Saint Pet Emergency Room)
 
+Purpose of the app:
+- Made in fulfillment of the group's chosen motif for theri software development project "Veterinary Clinic"
+- Removes the hassle of going onsite to set an appointment and coming back another time
+- The app helps its customers to set appointments online with the available veterinary doctors of the veterinary clinic
+- The app is also used by doctors/doctor's appointment secretary to approve, decline, move or modify the schedule of customer's visitation
+- Frontend: HTML, CSS, JS, Bootstrap, EJS
+- Backend: NodeJS, ExpressJS, Firebase API
+- Database: Google Firestore Firebase
+
+Constraints:
+- Made only within 1 and half month
+- Limited schedules, present knowledge and time conflicts
+- Mobile or Progressive Web App version launched discontinued
+- Screen is half responsive accounting from Bootstrap's built in flex/responsiveness.
+- One bug with the customer transaction data retrieval
+- Security level unknown
+
+--Backend dev's notes--
 Naa ray daghan sa youtube mga top extensions,
 
 mao ni ang mga gamit kaayo sa general webdev, para nako:
@@ -13,8 +31,10 @@ mao ni ang mga gamit kaayo sa general webdev, para nako:
 - Intellisense for CSS (by Zignd)
 - Better Comments
 
-React:
-- ES7 Snippets (React-ing the app is discontinued due to schedule conflicts)
+Update/Patch suggestions after presentation
+- Reactify or put a frontend framework 
+- Fix the backend of transaction for customers
+- Make app to PWA to cater to mobile users 
 
 To start the application:
 - npm start
